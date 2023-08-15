@@ -17,6 +17,10 @@ final lightTheme = ThemeData(
           return lightColorScheme.primary;
         },
       ),
+      foregroundColor: MaterialStateProperty.all(Colors.white),
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      ),
     ),
   ),
 );
