@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'theme/color_schemes.g.dart';
+import 'theme/light_theme.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -9,12 +12,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
+    return MaterialApp(
+      home: const Scaffold(
         body: Center(
           child: Text('Hello World!'),
         ),
       ),
+      theme: lightTheme,
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
     );
   }
 }
