@@ -1,46 +1,75 @@
+import 'package:doctor_hunt/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/constants.dart';
 import 'header_bg.dart';
 
-final onboardingScreenThree = OnboardingScreen(
-  mdl: OnboaringModel(
-    title: 'Easy Appointments',
-    content:
-        'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
-    imageAddress: onboardImage3,
-    headerBGL: true,
-    getStarted: () {},
-    skip: () {},
-  ),
-);
+class OnboardingScreenThree extends StatelessWidget {
+  const OnboardingScreenThree({super.key});
 
-final onboardingScreenTwo = OnboardingScreen(
-  mdl: OnboaringModel(
-    title: 'Choose Best Doctors',
-    content:
-        'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
-    imageAddress: onboardImage2,
-    headerBGL: false,
-    getStarted: () {},
-    skip: () {},
-  ),
-);
+  @override
+  Widget build(BuildContext context) {
+    return OnboardingScreen(
+      mdl: OnboardingModel(
+        title: 'Easy Appointments',
+        content:
+            'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
+        imageAddress: onboardImage3,
+        headerBGL: true,
+        getStarted: () {
+          // Get.rootDelegate.offAndToNamed(Routes.HOME);
+        },
+        skip: () {},
+      ),
+    );
+  }
+}
 
-final onboardingScreenOne = OnboardingScreen(
-  mdl: OnboaringModel(
-    title: 'Find Trusted Doctors',
-    content:
-        'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
-    imageAddress: onboardImage1,
-    headerBGL: true,
-    getStarted: () {},
-    skip: () {},
-  ),
-);
+class OnboardingScreenTwo extends StatelessWidget {
+  const OnboardingScreenTwo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return OnboardingScreen(
+      mdl: OnboardingModel(
+        title: 'Choose Best Doctors',
+        content:
+            'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
+        imageAddress: onboardImage2,
+        headerBGL: false,
+        getStarted: () {
+          Get.rootDelegate.toNamed(Routes.ONBOARDING_THREE);
+        },
+        skip: () {},
+      ),
+    );
+  }
+}
+
+class OnboardingScreenOne extends StatelessWidget {
+  const OnboardingScreenOne({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return OnboardingScreen(
+      mdl: OnboardingModel(
+        title: 'Find Trusted Doctors',
+        content:
+            'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.',
+        imageAddress: onboardImage1,
+        headerBGL: true,
+        getStarted: () {
+          Get.rootDelegate.toNamed(Routes.ONBOARDING_TWO);
+        },
+        skip: () {},
+      ),
+    );
+  }
+}
 
 class OnboardingScreen extends StatelessWidget {
-  final OnboaringModel mdl;
+  final OnboardingModel mdl;
   const OnboardingScreen({super.key, required this.mdl});
 
   @override
@@ -138,7 +167,7 @@ class OnboardingScreen extends StatelessWidget {
   }
 }
 
-class OnboaringModel {
+class OnboardingModel {
   final String title;
   final String content;
   final String imageAddress;
@@ -146,7 +175,7 @@ class OnboaringModel {
   void Function()? getStarted;
   void Function()? skip;
 
-  OnboaringModel({
+  OnboardingModel({
     required this.title,
     required this.content,
     required this.imageAddress,
