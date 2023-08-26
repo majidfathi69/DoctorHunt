@@ -36,6 +36,11 @@ class AppPages {
             ),
           ],
         ),
+        GetPage(
+          name: _Paths.HOME,
+          binding: HomeBinding(),
+          page: () => const HomeScreen(),
+        ),
       ],
     ),
   ];
