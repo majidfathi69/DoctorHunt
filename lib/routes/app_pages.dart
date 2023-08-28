@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../app/modules/find_doctors/bindings/find_doctors_binding.dart';
+import '../app/modules/find_doctors/views/find_doctors_screen.dart';
 import '../app/modules/onBoarding/onboarding_screen.dart';
 import '../app/modules/root/bindings/root_binding.dart';
 import '../app/modules/root/views/root_view.dart';
@@ -33,6 +35,11 @@ class AppPages {
               ],
             ),
           ],
+        ),
+        GetPage(
+          name: _Paths.FIND_DOCTORS,
+          page: () => const FindDoctorsView(),
+          binding: FindDoctorsBinding(),
         ),
       ],
     ),

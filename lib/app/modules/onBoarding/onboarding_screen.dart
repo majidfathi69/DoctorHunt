@@ -1,7 +1,7 @@
-import 'package:doctor_hunt/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../utils/constants.dart';
 import 'header_bg.dart';
 
@@ -18,7 +18,7 @@ class OnboardingScreenThree extends StatelessWidget {
         imageAddress: onboardImage3,
         headerBGL: true,
         getStarted: () {
-          // Get.rootDelegate.offAndToNamed(Routes.HOME);
+          Get.rootDelegate.offAndToNamed(Routes.FIND_DOCTORS);
         },
         skip: () {},
       ),
