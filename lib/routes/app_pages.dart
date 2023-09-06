@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../app/modules/doctor_select_time/bindings/doctor_select_time_binding.dart';
+import '../app/modules/doctor_select_time/views/doctor_select_time_view.dart';
 import '../app/modules/onBoarding/onboarding_screen.dart';
 import '../app/modules/root/bindings/root_binding.dart';
 import '../app/modules/root/views/root_view.dart';
@@ -33,6 +35,11 @@ class AppPages {
               ],
             ),
           ],
+        ),
+        GetPage(
+          name: _Paths.DOCTOR_SELECT_TIME,
+          page: () => const DoctorSelectTimeView(),
+          binding: DoctorSelectTimeBinding(),
         ),
       ],
     ),
