@@ -43,6 +43,16 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
               color: Colors.amber,
             ),
           ),
+          // TODO: sec5
+          Container(
+            margin: const EdgeInsets.all(20),
+            color: Colors.amber,
+          ),
+          // TODO: sec6
+          Container(
+            margin: const EdgeInsets.all(20),
+            color: Colors.amber,
+          ),
         ],
       ),
       appBar: AppBar(),
