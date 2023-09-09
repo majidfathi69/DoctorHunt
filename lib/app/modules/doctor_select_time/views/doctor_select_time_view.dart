@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import '../controllers/doctor_select_time_controller.dart';
@@ -20,12 +18,12 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
             margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
-                color: Colors.blue),
+                color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 15, 9.91),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-               crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset('lib/assets/image/Ductor.png'),
                   const SizedBox(
@@ -40,6 +38,9 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          const SizedBox(
+                            height: 2,
+                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,45 +49,40 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
                                 'Dr. Shruti Kedia',
                                 style: Theme.of(context).textTheme.titleMedium,
                               ),
-                              Text(
-                                'Upasana Dental Clinic, salt lake',
-                                style: TextStyle(fontSize: 10),
-                              ),
+                              Text('Upasana Dental Clinic, salt lake',
+                                  style: Theme.of(context).textTheme.bodySmall),
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              for (int i = 0; i < 4; i++)
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                               Icon(
                                 Icons.star,
                                 size: 15,
-                                color: Theme.of(context).primaryColorDark,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .tertiaryContainer,
                               ),
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                              ),
-                              Icon(
-                                Icons.star_border,
-                                size: 15,
-                              ),
+                              //TODO : unknow color
                             ],
                           ),
+                          const SizedBox(
+                            height: 2,
+                          )
                         ],
                       ),
                       IconButton(
                           onPressed: () {},
                           icon: Icon(
                             Icons.favorite,
-                            color: Theme.of(context).colorScheme.tertiaryContainer,
+                            color:
+                                Theme.of(context).colorScheme.tertiaryContainer,
                           )),
                     ],
                   ))
@@ -99,33 +95,67 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
           Container(
             height: 54,
             width: double.infinity,
-            //color: Colors.green,
-            child: ListView.builder(
+            child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-                    child: Container(
-                      width: 150,
-                      height: 54,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(6)),
-                          color: Theme.of(context).primaryColor),
+                  padding: const EdgeInsets.only(left: 16),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6)),
+                      //backgroundColor: Theme.of(context).colorScheme.primary,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Tomorrow, 24 Feb',
+                          style: Theme.of(context).primaryTextTheme.titleMedium,
+                        ),
+                        Text(
+                          '9 slots available',
+                          style: Theme.of(context).primaryTextTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ), // TODO: sec minimon size
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              style: BorderStyle.solid,
+                            ),
+                            borderRadius: BorderRadius.circular(4),
+                          )),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'Today, 23 Feb',
-                            style: Theme.of(context).primaryTextTheme.bodyLarge,
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
                           Text(
-                            '9 slots available',
-                            style: Theme.of(context).primaryTextTheme.bodySmall,
+                            'No slots available',
+                            style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ],
                       ),
                     ));
               },
+              itemCount: 20,
             ),
           ),
           const SizedBox(height: 18),
@@ -135,18 +165,19 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
               height: 64,
               width: 135,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Today, 23 Feb',
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                  Text('Today,23Feb',
+                      style: Theme.of(context).textTheme.titleLarge),
+                  //TODO: tiileLarge
                   const SizedBox(
                     height: 16,
                   ),
                   Text(
                     'No slots available',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ), //TODO :unknown color
                 ],
               ),
             ),
@@ -157,15 +188,43 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
             child: Container(
               width: 306,
               height: 152,
-              color: Colors.blueGrey,
               child: Column(
                 children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(306, 54),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      //backgroundColor: Theme.of(context).colorScheme.primary
+                    ),
+                    child: const Text('Next availability on wed, 24 Feb'),
+                    //TODO : style
+                  ),
                   Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Container(
-                        width: 306,
-                        height: 54,
-                        child: Text('Next availability on wed, 24 Feb')),
+                    padding: const EdgeInsets.only(top: 14, bottom: 10),
+                    child: Text(
+                      'OR',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ), // TODO unknown color
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(306, 54),
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            side: BorderSide(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 1))),
+                    child: Text(
+                      'Contact Clinic',
+                      style: TextStyle(color: Theme.of(context).primaryColor),
+                      //TODO : font
+                    ),
                   )
                 ],
               ),
