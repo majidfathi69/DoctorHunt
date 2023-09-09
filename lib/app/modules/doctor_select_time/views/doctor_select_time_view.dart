@@ -29,8 +29,6 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
           // TODO: sec3
           Center(
             child: Container(
-              height: 64,
-              width: 135,
               color: Colors.amber,
             ),
           ),
