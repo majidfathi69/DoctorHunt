@@ -1,6 +1,10 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
 
 import '../app/modules/onBoarding/onboarding_screen.dart';
+import '../app/modules/popular_doctor/bindings/popular_doctor_bindings.dart';
+import '../app/modules/popular_doctor/views/popular_doctor_view.dart';
 import '../app/modules/root/bindings/root_binding.dart';
 import '../app/modules/root/views/root_view.dart';
 part 'app_routes.dart';
@@ -33,6 +37,11 @@ class AppPages {
               ],
             ),
           ],
+        ),
+        GetPage(
+          name: _Paths.POPULAR_DOCTOR,
+          page: () => const PopularDoctorView(),
+          binding: PopularDoctorBinding(),
         ),
       ],
     ),
