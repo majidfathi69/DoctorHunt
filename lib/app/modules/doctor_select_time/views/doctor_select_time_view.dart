@@ -103,6 +103,7 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.fromLTRB(4, 10, 4, 4),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6)),
                       //backgroundColor: Theme.of(context).colorScheme.primary,
@@ -111,9 +112,13 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          'Tomorrow, 24 Feb',
-                          style: Theme.of(context).primaryTextTheme.titleMedium,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          child: Text(
+                            'Tomorrow, 24 Feb',
+                            style:
+                                Theme.of(context).primaryTextTheme.titleMedium,
+                          ),
                         ),
                         Text(
                           '9 slots available',
@@ -130,6 +135,7 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.fromLTRB(4, 10, 4, 4),
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
@@ -143,9 +149,12 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            'Today, 23 Feb',
-                            style: Theme.of(context).textTheme.titleMedium,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Text(
+                              'Today, 23 Feb',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
                           ),
                           Text(
                             'No slots available',
@@ -232,13 +241,155 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
           ),
           // TODO: sec5
           Container(
+            width: 335,
+            height: 125,
             margin: const EdgeInsets.all(20),
-            color: Colors.amber,
+            color: Colors.transparent,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Afternoon 7 slots',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(
+                  height: 11,
+                ),
+                Expanded(
+                  child: GridView.count(
+                    childAspectRatio: 2,
+                    //TODO: size textButton
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    crossAxisCount: 4,
+                    children: [
+                      ...List.generate(
+                        6,
+                        (index) {
+                          return ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(
+                                  const EdgeInsets.all(11)),
+                              fixedSize:
+                                  MaterialStateProperty.all(const Size(76, 40)),
+                              backgroundColor: MaterialStateProperty.all(
+                                  Theme.of(context)
+                                      .colorScheme
+                                      .primaryContainer),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6)),
+                              ),
+                            ),
+                            child: Text(
+                              '1:00 PM',
+                              style: TextStyle(
+                                  color: Theme.of(context).colorScheme.primary),
+                              //TODO : unkowe fontSize
+                            ),
+                          );
+                        },
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(
+                              const EdgeInsets.all(11)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6)),
+                          ),
+                        ),
+                        child: Text(
+                          '2:00 PM',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.onPrimary),
+                          //TODO : unkowe fontSize
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
           // TODO: sec6
           Container(
             margin: const EdgeInsets.all(20),
-            color: Colors.amber,
+            width: 335,
+            height: 123,
+            color: Colors.transparent,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Evening 5 slots',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(
+                  height: 9,
+                ),
+                Expanded(
+                  child: GridView.count(
+                    physics: BouncingScrollPhysics(),
+                    childAspectRatio: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    crossAxisCount: 4,
+                    children: [
+                      ...List.generate(
+                        5,
+                        (index) {
+                          return ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(
+                                  const EdgeInsets.all(11)),
+                              fixedSize:
+                                  MaterialStateProperty.all(const Size(76, 40)),
+                              backgroundColor: MaterialStateProperty.all(
+                                  Theme.of(context)
+                                      .colorScheme
+                                      .primaryContainer),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6)),
+                              ),
+                            ),
+                            child: Text(
+                              '5:00 PM',
+                              style: TextStyle(
+                                  color: Theme.of(context).colorScheme.primary),
+                              //TODO : unkowe fontSize
+                            ),
+                          );
+                        },
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(
+                              const EdgeInsets.all(11)),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6)),
+                          ),
+                        ),
+                        child: Text(
+                          '5:00 PM',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.onPrimary),
+                          //TODO : unkowe fontSize
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),
