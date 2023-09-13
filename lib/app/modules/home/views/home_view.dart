@@ -375,7 +375,6 @@ class SearchField extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onPrimary, width: 0),
             borderRadius: BorderRadius.circular(6),
           ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
           hintText: 'Search...',
           border: InputBorder.none,
           prefixIcon: const Icon(Icons.search),
