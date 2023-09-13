@@ -261,8 +261,12 @@ class LiveDoctors extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Live Doctor', style: Theme.of(context).textTheme.titleLarge),
-        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text('Live Doctor',
+              style: Theme.of(context).textTheme.titleLarge),
+        ),
+        const SizedBox(height: 13),
         SizedBox(
           height: 168,
           child: ListView.builder(
@@ -286,9 +290,43 @@ class LiveDoctor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7.5),
-      child: Image.asset(liveDc, width: 116.48, height: 168),
+    return SizedBox(
+      width: 116.48,
+      height: 168,
+      child: Stack(
+        children: [
+          Image.asset(liveDc),
+          Positioned(
+            top: 11,
+            left: 65,
+            child: Container(
+              width: 45,
+              height: 18,
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                    radius: 3,
+                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                  ),
+                  Text('Live',
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary)),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Icon(
+              Icons.play_circle_outline,
+              color: Theme.of(context).colorScheme.onPrimary,
+              size: 30,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
