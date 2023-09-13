@@ -226,7 +226,7 @@ class DoctorSpecialties extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: 90,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 10,
@@ -246,9 +246,10 @@ class DoctorSpecialty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      child: Image.asset(dcSpecialty, width: 80, height: 90),
+    return SizedBox(
+      width: 80,
+      height: 90,
+      child: Image.asset(dcSpecialty),
     );
   }
 }
