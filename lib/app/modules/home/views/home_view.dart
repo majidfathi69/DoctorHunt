@@ -60,7 +60,8 @@ class FeaturedDoctors extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text('See all', style: Theme.of(context).textTheme.labelMedium),
+                  Text('See all',
+                      style: Theme.of(context).textTheme.labelMedium),
                   const Icon(
                     Icons.arrow_forward_ios,
                     size: 8,
@@ -107,11 +108,14 @@ class FeaturedDoctor extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                 Icon(Icons.favorite, size: 15, color: Theme.of(context).colorScheme.tertiaryContainer),
+                Icon(Icons.favorite,
+                    size: 15,
+                    color: Theme.of(context).colorScheme.tertiaryContainer),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                     Icon(Icons.star, size: 15, color: Theme.of(context).colorScheme.primary),
+                    Icon(Icons.star,
+                        size: 15, color: Theme.of(context).colorScheme.primary),
                     Text('7.0', style: Theme.of(context).textTheme.labelSmall),
                   ],
                 )
@@ -358,7 +362,26 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(width: 335, height: 54, color: Colors.amber);
+    return Container(
+      width: 335,
+      height: 54,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          color: Theme.of(context).colorScheme.onPrimary),
+      child: TextField(
+        decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.onPrimary, width: 0),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+          hintText: 'Search...',
+          border: InputBorder.none,
+          prefixIcon: const Icon(Icons.search),
+        ),
+      ),
+    );
   }
 }
 
