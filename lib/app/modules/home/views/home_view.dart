@@ -48,19 +48,26 @@ class FeaturedDoctors extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Feature Doctor',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text('See all',
-                  style: Theme.of(context).textTheme.labelMedium),
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Feature Doctor',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Row(
+                children: [
+                  Text('See all', style: Theme.of(context).textTheme.labelMedium),
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 8,
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 22),
         SizedBox(
@@ -99,11 +106,11 @@ class FeaturedDoctor extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.favorite, size: 15, color: Colors.red),
+                 Icon(Icons.favorite, size: 15, color: Theme.of(context).colorScheme.tertiaryContainer),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.star, size: 15, color: Colors.yellow),
+                     Icon(Icons.star, size: 15, color: Theme.of(context).colorScheme.primary),
                     Text('7.0', style: Theme.of(context).textTheme.labelSmall),
                   ],
                 )
