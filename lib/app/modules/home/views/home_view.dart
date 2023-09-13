@@ -11,13 +11,14 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        alignment: Alignment.center,
         children: [
           const Align(
             alignment: Alignment.topCenter,
             child: UserProfile(),
           ),
           Positioned.fill(
-            top: 148,
+            top: 210,
             child: ListView(
               children: const [
                 LiveDoctors(),
