@@ -147,19 +147,27 @@ class PopularDoctors extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Popular Doctor',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text('See all',
-                  style: Theme.of(context).textTheme.labelMedium),
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Popular Doctor',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Row(
+                children: [
+                  Text('See all',
+                      style: Theme.of(context).textTheme.labelMedium),
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 8,
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
         Container(
           color: Theme.of(context).colorScheme.onSecondary,
@@ -185,37 +193,42 @@ class PopularDoctor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 6),
-          child: Image.asset(popularDc, width: 180, height: 190),
-        ),
-        Column(
-          children: [
-            Column(
-              children: [
-                Text('Dr. Fillerup Grab',
-                    style: Theme.of(context).textTheme.titleMedium),
-                Text('Medicine Specialist',
-                    style: Theme.of(context).textTheme.labelMedium),
-              ],
-            ),
-            const SizedBox(
-              height: 6,
-              child: Row(
+    return Container(
+      decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(12))),
+      child: Column(
+        children: [
+          Container(
+            width: 180,
+            height: 190,
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: Image.asset(popularDc),
+          ),
+          Column(
+            children: [
+              Column(
                 children: [
-                  Icon(Icons.star, color: Colors.yellow),
-                  Icon(Icons.star, color: Colors.yellow),
-                  Icon(Icons.star, color: Colors.yellow),
-                  Icon(Icons.star, color: Colors.yellow),
-                  Icon(Icons.star, color: Color(0XFFE2E5EA)),
+                  Text('Dr. Fillerup Grab',
+                      style: Theme.of(context).textTheme.titleMedium),
+                  Text('Medicine Specialist',
+                      style: Theme.of(context).textTheme.labelMedium),
                 ],
               ),
-            ),
-          ],
-        ),
-      ],
+              SizedBox(
+                height: 6,
+                child: Row(
+                  children: [
+                    for (var i = 0; i < 5; i++)
+                      Icon(Icons.star,
+                          color: Theme.of(context).colorScheme.primary,
+                          size: 12)
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
