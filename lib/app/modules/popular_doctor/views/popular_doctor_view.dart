@@ -15,17 +15,10 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
           Container(
             height: 243,
             width: double.infinity,
-            //margin: EdgeInsets.only(left: 20),
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12), topRight: Radius.circular(12)),
-            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,27 +27,27 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
                       'Popular Doctor',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'See all',
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            size: 10,
-                          ),
-                          //TODO: unknow color Icon
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'See all',
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                        const Icon(
+                          Icons.arrow_forward_ios,
+                          size: 10,
+                        ),
+                        //TODO: unknow color Icon
+                      ],
                     ),
                   ],
                 ),
-                Expanded(
+                const SizedBox(height: 15),
+                // TODO: sizedbox figma 15 but overflowe mishe
+                SizedBox(
+                  height: 200,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 7,
@@ -62,7 +55,6 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
                       return Padding(
                         padding: const EdgeInsets.only(right: 12),
                         child: Container(
-                          //TODO: in  sizedBox not BorderRadius
                           width: 136,
                           height: 200,
                           decoration: BoxDecoration(
@@ -72,7 +64,11 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Image.asset('lib/assets/image/image.png'),
+                              Image.asset('lib/assets/image/image.png',
+                                  height: 131, width: 136),
+                              const SizedBox(
+                                height: 7,
+                              ),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,19 +126,28 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Category', style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(
+                  height: 10,
+                ),
                 Expanded(
                     child: ListView.builder(
                   itemCount: 7,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 14, top: 10),
+                      padding: const EdgeInsets.only(
+                        bottom: 14,
+                      ),
                       child: Container(
+                        width: 335,
+                        height: 104,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8)),
                         child: SizedBox(
+                          width: 315,
+                          height: 82,
                           child: Padding(
-                            padding: const EdgeInsets.all(11),
+                            padding: const EdgeInsets.fromLTRB(10, 11, 10, 11),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,80 +156,79 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
                                 const SizedBox(
                                   width: 15.05,
                                 ),
-                                Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Column(
-                                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Dr. Pediatrician',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleMedium,
-                                            ),
-                                            const SizedBox(
-                                              height: 4,
-                                            ),
-                                            Text(
-                                              'Specialist Cardiologist',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            )
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          width: 55.95,
-                                        ),
-                                        Icon(
-                                          Icons.favorite,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .tertiaryContainer,
-                                        )
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        for (int i = 1; i < 5; i++)
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Dr. Pediatrician',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleMedium,
+                                              ),
+                                              Text(
+                                                'Specialist Cardiologist',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                              )
+                                            ],
+                                          ),
                                           Icon(
-                                            Icons.star,
-                                            size: 15,
+                                            Icons.favorite,
                                             color: Theme.of(context)
                                                 .colorScheme
-                                                .primary,
+                                                .tertiaryContainer,
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 8.59,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              for (int i = 1; i < 5; i++)
+                                                Icon(
+                                                  Icons.star,
+                                                  size: 15,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                ),
+                                              Icon(
+                                                Icons.star,
+                                                size: 15,
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .tertiaryContainer,
+                                              ),
+                                            ],
                                           ),
-                                        Icon(
-                                          Icons.star,
-                                          size: 15,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .tertiaryContainer,
-                                        ),
-                                        SizedBox(
-                                          width: 37.12,
-                                        ),
-                                        Text(
-                                          '2.4 (2475 views)',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge,
-                                        )
-                                      ],
-                                    ),
-                                  ],
+                                          Text(
+                                            '2.4 (2475 views)',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge,
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 )
                               ],
                             ),
