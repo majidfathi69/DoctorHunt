@@ -124,7 +124,7 @@ class AvailableTimes extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.count(
-                  physics: BouncingScrollPhysics(),
+                  //physics: BouncingScrollPhysics(),
                   childAspectRatio: 2,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
