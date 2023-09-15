@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../app/modules/doctor_details/bindings/doctor_details_binding.dart';
+import '../app/modules/doctor_details/views/doctor_details_view.dart';
 import '../app/modules/onBoarding/onboarding_screen.dart';
 import '../app/modules/root/bindings/root_binding.dart';
 import '../app/modules/root/views/root_view.dart';
@@ -34,6 +36,11 @@ class AppPages {
             ),
           ],
         ),
+        GetPage(
+          name: _Paths.DOCTOR_DETAILS,
+          page: () => const DoctorDetailsView(),
+          binding: DoctorDetailsBinding(),
+        )
       ],
     ),
   ];
