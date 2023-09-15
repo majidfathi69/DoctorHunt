@@ -64,7 +64,7 @@ class FeatureDoctors extends StatelessWidget {
                   ),
                   const Icon(
                     Icons.arrow_forward_ios,
-                    size: 15,
+                    size: 11,
                   ),
                 ],
               )
