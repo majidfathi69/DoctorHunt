@@ -101,7 +101,7 @@ class FeatureDoctor extends StatelessWidget {
         height: 130,
         width: 96,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6), color: Colors.white),
+            borderRadius: BorderRadius.circular(6), color: Theme.of(context).colorScheme.onPrimary),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -149,7 +149,7 @@ class FeatureDoctor extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   Text('25.00/ hours',
-                  //TODO : alamat $ natonestam bezarm
+                      //TODO : alamat $ natonestam bezarm
                       style: Theme.of(context).textTheme.labelSmall),
                 ],
               )
@@ -192,7 +192,7 @@ class FavouritsDoctor extends StatelessWidget {
       width: 160,
       height: 180,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(6)),
+          color: Theme.of(context).colorScheme.onPrimary, borderRadius: BorderRadius.circular(6)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -241,37 +241,30 @@ class SearchBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-
     return Container(
-      height: 54,
       width: 335,
+      height: 54,
       decoration: BoxDecoration(
-        color: Colors.amber,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InputChip(
-            label: Text(
-              'Dentist',
-              style: Theme.of(context).textTheme.labelLarge,
+          borderRadius: BorderRadius.circular(6),
+          color: Theme.of(context).colorScheme.onPrimary),
+      child: TextField(
+        decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.onPrimary, width: 0),
+              borderRadius: BorderRadius.circular(6),
             ),
-          ),
-          Icon(
-            Icons.search,
-            color: Theme.of(context).colorScheme.outline,
-          ),
-          Text(
-            'Dentist',
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
-          Icon(
-            Icons.close,
-            color: Theme.of(context).colorScheme.outline,
-          )
-        ],
+            hintText: 'Dentist',
+            //hintStyle: Theme.of(context).textTheme.labelLarge,
+            border: InputBorder.none,
+            prefixIcon: Icon(
+              Icons.search,
+              color: Theme.of(context).colorScheme.outline,
+            ),
+            suffixIcon: Icon(
+              Icons.close,
+              color: Theme.of(context).colorScheme.outline,
+            )),
       ),
     );
   }
