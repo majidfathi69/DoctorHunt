@@ -167,6 +167,7 @@ class FavouritsDoctors extends StatelessWidget {
     // TODO: implement build
     return Expanded(
       child: GridView.count(
+        childAspectRatio: 0.9,
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
