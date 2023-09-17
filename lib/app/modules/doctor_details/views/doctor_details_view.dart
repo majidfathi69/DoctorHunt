@@ -18,7 +18,7 @@ class DoctorDetailsView extends GetView<DoctorDetailsController> {
         ),
         child: ListView(
           children: const [
-            // DoctorDetails(),
+            DoctorDetails(),
             SizedBox(height: 25),
             // DoctorState(),
             SizedBox(height: 25),
@@ -69,6 +69,128 @@ class DoctorDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    throw UnconstrainedBox();
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Container(
+        width: 335,
+        height: 170,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: BorderRadius.circular(6)),
+        child: const DoctorDetail(),
+      ),
+    );
+  }
+}
+
+class DoctorDetail extends StatelessWidget {
+  const DoctorDetail({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(19, 18, 9, 17),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Image.asset('lib/assets/image/DoctorDetails.png'),
+              const SizedBox(
+                width: 12,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Dr. Pediatrician',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              'Specialist Cardiologist',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ],
+                        ),
+                        Icon(
+                          Icons.favorite,
+                          color:
+                              Theme.of(context).colorScheme.tertiaryContainer,
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            for (int i = 0; i < 4; i++)
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                          ],
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: '\$',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                              ),
+                              TextSpan(
+                                text: ' 28.00/hr',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              )
+                              //TODO colors
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                fixedSize: const Size(140, 32),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4))),
+            child: const Text('Book Now'),
+          ),
+        ],
+      ),
+    );
   }
 }
