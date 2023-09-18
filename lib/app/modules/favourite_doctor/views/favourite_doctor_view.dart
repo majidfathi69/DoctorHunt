@@ -101,59 +101,75 @@ class FeatureDoctor extends StatelessWidget {
         height: 130,
         width: 96,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6), color: Theme.of(context).colorScheme.onPrimary),
+            borderRadius: BorderRadius.circular(6),
+            color: Theme.of(context).colorScheme.onPrimary),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 6, 10, 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.favorite,
-                      color: Theme.of(context).colorScheme.tertiaryContainer,
-                      size: 13,
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 13,
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          '3.7',
-                          style: Theme.of(context).textTheme.labelSmall,
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Image.asset('lib/assets/image/Ellipse 142.png'),
-              const SizedBox(
-                height: 6,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 6, 10, 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Dr. Crick',
-                    style: Theme.of(context).textTheme.titleSmall,
+                  Icon(
+                    Icons.favorite,
+                    color: Theme.of(context).colorScheme.tertiaryContainer,
+                    size: 13,
                   ),
-                  Text('25.00/ hours',
-                      //TODO : alamat $ natonestam bezarm
-                      style: Theme.of(context).textTheme.labelSmall),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Theme.of(context).colorScheme.primary,
+                        size: 13,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Text(
+                        '3.7',
+                        style: Theme.of(context).textTheme.labelSmall,
+                      )
+                    ],
+                  ),
                 ],
-              )
-            ]),
+              ),
+            ),
+            Image.asset('lib/assets/image/Ellipse 142.png'),
+            const SizedBox(
+              height: 6,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Dr. Crick',
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: ' \$',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium!
+                            .copyWith(
+                                color: Theme.of(context).colorScheme.primary),
+                      ),
+                      TextSpan(
+                          text: '25.00/ hours',
+                          style: Theme.of(context).textTheme.labelSmall),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -167,7 +183,7 @@ class FavouritsDoctors extends StatelessWidget {
     // TODO: implement build
     return Expanded(
       child: GridView.count(
-        childAspectRatio: 0.9,
+        //childAspectRatio: 0.9,
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
@@ -189,49 +205,52 @@ class FavouritsDoctor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 160,
-      height: 180,
-      decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onPrimary, borderRadius: BorderRadius.circular(6)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 13, top: 13),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Icon(
-                Icons.favorite,
-                color: Theme.of(context).colorScheme.tertiaryContainer,
+    return UnconstrainedBox(
+      child: Container(
+        width: 160,
+        height: 180,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: BorderRadius.circular(6)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 13, top: 13),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Icon(
+                  Icons.favorite,
+                  color: Theme.of(context).colorScheme.tertiaryContainer,
+                ),
               ),
             ),
-          ),
-          Image.asset('lib/assets/image/Ellipse 141.png'),
-          const SizedBox(
-            height: 11,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Dr. Shouey',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(
-                'Specalist Cardiology',
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-              ),
-            ],
-          ),
-        ],
+            Image.asset('lib/assets/image/Ellipse 141.png'),
+            const SizedBox(
+              height: 11,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Dr. Shouey',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  'Specalist Cardiology',
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
