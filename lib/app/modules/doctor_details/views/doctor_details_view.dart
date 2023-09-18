@@ -67,12 +67,10 @@ class ServicesDescription extends StatelessWidget {
     // TODO: implement build
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 19),
-      child: UnconstrainedBox(
-        child: SizedBox(
-          height: 149,
-          width: 336,
-          child: Services(),
-        ),
+      child: SizedBox(
+        height: 149,
+        width: 336,
+        child: Services(),
       ),
     );
   }
@@ -280,15 +278,13 @@ class DoctorDetails extends StatelessWidget {
     // TODO: implement build
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: UnconstrainedBox(
-        child: Container(
-          width: 335,
-          height: 170,
-          decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onPrimary,
-              borderRadius: BorderRadius.circular(6)),
-          child: const DoctorDetail(),
-        ),
+      child: Container(
+        width: 390,
+        height: 170,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: BorderRadius.circular(6)),
+        child: const DoctorDetail(),
       ),
     );
   }
