@@ -47,7 +47,7 @@ class MapWidget extends StatelessWidget {
           height: 210,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.amber,
+            color: Theme.of(context).colorScheme.onPrimary,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Image.asset(
@@ -67,10 +67,12 @@ class ServicesDescription extends StatelessWidget {
     // TODO: implement build
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 19),
-      child: SizedBox(
-        height: 149,
-        width: 336,
-        child: Services(),
+      child: UnconstrainedBox(
+        child: SizedBox(
+          height: 149,
+          width: 336,
+          child: Services(),
+        ),
       ),
     );
   }
@@ -114,6 +116,7 @@ class Services extends StatelessWidget {
               ),
               const Divider(
                 color: Color(0x6772941a),
+                //TODO  unknow color line
               ),
               RichText(
                 text: TextSpan(
@@ -162,14 +165,16 @@ class DoctorState extends StatelessWidget {
     // TODO: implement build
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 35),
-      child: Container(
-        width: 305,
-        height: 84,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onPrimary,
-          borderRadius: BorderRadius.circular(10),
+      child: UnconstrainedBox(
+        child: Container(
+          width: 305,
+          height: 84,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: const StateWidget(),
         ),
-        child: const StateWidget(),
       ),
     );
   }
@@ -275,13 +280,15 @@ class DoctorDetails extends StatelessWidget {
     // TODO: implement build
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        width: 335,
-        height: 170,
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.onPrimary,
-            borderRadius: BorderRadius.circular(6)),
-        child: const DoctorDetail(),
+      child: UnconstrainedBox(
+        child: Container(
+          width: 335,
+          height: 170,
+          decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.onPrimary,
+              borderRadius: BorderRadius.circular(6)),
+          child: const DoctorDetail(),
+        ),
       ),
     );
   }
