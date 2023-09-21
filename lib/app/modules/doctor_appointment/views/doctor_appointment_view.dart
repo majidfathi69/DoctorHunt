@@ -18,9 +18,9 @@ class DoctorAppointmentView extends StatelessWidget {
             SizedBox(height: 100), // TODO: AppBar
             DoctorDetails(),
             SizedBox(height: 30),
-            // AppointmentFor(),
+            AppointmentFor(),
             SizedBox(height: 30),
-            // WhoIsPatient(),
+            WhoIsPatient(),
           ],
         ),
       ),
@@ -152,7 +152,48 @@ class AppointmentFor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    throw UnimplementedError();
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: SizedBox(
+        height: 165,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Appointment For',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(
+              height: 19,
+            ),
+            SizedBox(
+              height: 54,
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  hintText: 'Patient Name',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 18,
+            ),
+            SizedBox(
+              height: 54,
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    hintText: 'Contact Number'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -162,6 +203,6 @@ class WhoIsPatient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    throw UnimplementedError();
+    return Container();
   }
 }
