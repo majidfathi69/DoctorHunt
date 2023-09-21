@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../app/modules/doctor_appointment/bindings/doctor_appointment_binding.dart';
+import '../app/modules/doctor_appointment/views/doctor_appointment_view.dart';
 import '../app/modules/onBoarding/onboarding_screen.dart';
 import '../app/modules/root/bindings/root_binding.dart';
 import '../app/modules/root/views/root_view.dart';
@@ -8,6 +10,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
+  // ignore: constant_identifier_names
   static const INITIAL = Routes.ONBOARDING;
 
   static final routes = [
@@ -34,6 +37,11 @@ class AppPages {
             ),
           ],
         ),
+        GetPage(
+          name: _Paths.DOCTOR_APPOINTMENT,
+          page: () => const DoctorAppointmentView(),
+          binding: DoctorAppointmentBinding(),
+        )
       ],
     ),
   ];
