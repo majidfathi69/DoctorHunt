@@ -14,7 +14,7 @@ class DoctorAppointmentView extends StatelessWidget {
           ),
         ),
         child: ListView(
-          children:  [
+          children: const[
             SizedBox(height: 100), // TODO: AppBar
             DoctorDetails(),
             SizedBox(height: 30),
@@ -22,8 +22,34 @@ class DoctorAppointmentView extends StatelessWidget {
             SizedBox(height: 30),
             WhoIsPatient(),
             SizedBox(height: 23),
-            ElevatedButton(onPressed: (){}, child: Text('Next'))
+            Button(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class Button extends StatelessWidget {
+  const Button({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return UnconstrainedBox(
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          fixedSize: const Size(295, 54),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+          ),
+        ),
+        child: Text(
+          'Next',
+          style:
+              TextStyle(color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
     );
