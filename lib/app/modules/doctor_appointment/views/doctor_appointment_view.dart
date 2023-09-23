@@ -14,13 +14,15 @@ class DoctorAppointmentView extends StatelessWidget {
           ),
         ),
         child: ListView(
-          children: const [
+          children:  [
             SizedBox(height: 100), // TODO: AppBar
             DoctorDetails(),
             SizedBox(height: 30),
             AppointmentFor(),
             SizedBox(height: 30),
             WhoIsPatient(),
+            SizedBox(height: 23),
+            ElevatedButton(onPressed: (){}, child: Text('Next'))
           ],
         ),
       ),
@@ -203,6 +205,112 @@ class WhoIsPatient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: SizedBox(
+        height: 190,
+        width: 430,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Who is this patient?',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(
+              height: 19,
+            ),
+            Expanded(
+                child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return const Padding(
+                          padding: EdgeInsets.only(right: 10),
+                          child: ButtonWhoIsPatient(),
+                        );
+                      } else {
+                        return Container();
+                      }
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Padding(
+                        padding: EdgeInsets.only(right: 10),
+                        child: ImageWhoIsPatient(),
+                      );
+                    },
+                    itemCount: 10))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ImageWhoIsPatient extends StatelessWidget {
+  const ImageWhoIsPatient({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return UnconstrainedBox(
+      child: Container(
+        width: 100,
+        height: 151,
+        decoration: BoxDecoration(
+          //color: Colors.white,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Column(
+          children: [
+            Image.asset('lib/assets/image/Patient.png'),
+            const SizedBox(
+              height: 6,
+            ),
+            Text(
+              'My child',
+              style: Theme.of(context).textTheme.bodyMedium,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonWhoIsPatient extends StatelessWidget {
+  const ButtonWhoIsPatient({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return UnconstrainedBox(
+      alignment: Alignment.topCenter,
+      child: Container(
+        width: 100,
+        height: 125,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+                onPressed: () {},
+                child: const Icon(
+                  Icons.add,
+                  size: 50,
+                )),
+            Text(
+              'Add',
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
