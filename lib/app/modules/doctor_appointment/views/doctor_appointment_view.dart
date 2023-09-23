@@ -14,7 +14,7 @@ class DoctorAppointmentView extends StatelessWidget {
           ),
         ),
         child: ListView(
-          children: const[
+          children: const [
             SizedBox(height: 100), // TODO: AppBar
             DoctorDetails(),
             SizedBox(height: 30),
@@ -48,8 +48,7 @@ class Button extends StatelessWidget {
         ),
         child: Text(
           'Next',
-          style:
-              TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+          style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
     );
@@ -211,6 +210,7 @@ class AppointmentFor extends StatelessWidget {
             SizedBox(
               height: 54,
               child: TextField(
+                
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(6),
