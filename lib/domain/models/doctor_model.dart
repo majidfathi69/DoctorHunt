@@ -10,6 +10,7 @@ class DoctorModel {
     required this.specialty,
     required this.price,
     required this.profile,
+    required this.avatarPath,
   });
 
   final String id;
@@ -20,6 +21,7 @@ class DoctorModel {
   final String specialty;
   final double price;
   final ProfileModel profile;
+  final String avatarPath;
 
   // A method that converts the doctor entity to a JSON object
   Map<String, dynamic> toJson() {
@@ -30,6 +32,8 @@ class DoctorModel {
       'phone': phone,
       'address': address,
       'specialty': specialty,
+      'avatarPath': avatarPath,
+      'profile': profile.toJson(),
     };
   }
 
@@ -43,6 +47,7 @@ class DoctorModel {
       address: json['address'] as String,
       specialty: json['specialty'] as String,
       price: json['price'] as double,
+      avatarPath: json['avatarPath'] as String,
       profile: ProfileModel.fromJson(json['profile']),
     );
   }
