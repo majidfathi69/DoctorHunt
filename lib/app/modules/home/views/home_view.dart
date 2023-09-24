@@ -1,10 +1,12 @@
+import 'package:doctor_hunt/domain/models/doctor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/constants.dart';
+import '../../../widgets/stars_bar_widget.dart';
 import '../controllers/home_controller.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
@@ -157,6 +159,8 @@ class PopularDoctors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ctrl = Get.find<HomeController>();
+
     return Column(
       children: [
         Padding(
@@ -184,15 +188,20 @@ class PopularDoctors extends StatelessWidget {
         Container(
           color: Theme.of(context).colorScheme.onSecondary,
           height: 264,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (context, count) {
-              return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: PopularDoctor(),
-              );
-            },
+          child: Obx(
+            () =>
+                ctrl.loadingPopularDoctors.value || ctrl.popularDoctors.isEmpty
+                    ? Container()
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: ctrl.popularDoctors.length,
+                        itemBuilder: (context, count) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: PopularDoctor(ctrl.popularDoctors[count]),
+                          );
+                        },
+                      ),
           ),
         ),
       ],
@@ -201,7 +210,9 @@ class PopularDoctors extends StatelessWidget {
 }
 
 class PopularDoctor extends StatelessWidget {
-  const PopularDoctor({super.key});
+  const PopularDoctor(this.doctor, {super.key});
+
+  final DoctorModel doctor;
 
   @override
   Widget build(BuildContext context) {
@@ -220,22 +231,15 @@ class PopularDoctor extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text('Dr. Fillerup Grab',
+                  Text(doctor.name,
                       style: Theme.of(context).textTheme.titleMedium),
-                  Text('Medicine Specialist',
+                  Text(doctor.specialty,
                       style: Theme.of(context).textTheme.labelMedium),
                 ],
               ),
               SizedBox(
                 height: 6,
-                child: Row(
-                  children: [
-                    for (var i = 0; i < 5; i++)
-                      Icon(Icons.star,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 12)
-                  ],
-                ),
+                child: StarsBarWidget(doctor.profile.rating.round()),
               ),
             ],
           ),
@@ -284,6 +288,8 @@ class LiveDoctors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ctrl = Get.find<HomeController>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -295,15 +301,19 @@ class LiveDoctors extends StatelessWidget {
         const SizedBox(height: 13),
         SizedBox(
           height: 168,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (context, count) {
-              return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: LiveDoctor(),
-              );
-            },
+          child: Obx(
+            () => ctrl.loadingLiveDoctors.value || ctrl.liveDoctors.isEmpty
+                ? Container()
+                : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: ctrl.liveDoctors.length,
+                    itemBuilder: (context, count) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        child: LiveDoctor(ctrl.liveDoctors[count]),
+                      );
+                    },
+                  ),
           ),
         ),
       ],
@@ -312,7 +322,9 @@ class LiveDoctors extends StatelessWidget {
 }
 
 class LiveDoctor extends StatelessWidget {
-  const LiveDoctor({super.key});
+  const LiveDoctor(this.doctor, {super.key});
+
+  final DoctorModel doctor;
 
   @override
   Widget build(BuildContext context) {
