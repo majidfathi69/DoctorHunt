@@ -8,8 +8,8 @@ class DoctorModel {
     required this.phone,
     required this.address,
     required this.specialty,
-    required this.rating,
-    required this.available,
+    required this.price,
+    required this.profile,
   });
 
   final String id;
@@ -18,9 +18,8 @@ class DoctorModel {
   final String phone;
   final String address;
   final String specialty;
-  final int rating;
-  final bool available;
-
+  final double price;
+  final ProfileModel profile;
 
   // A method that converts the doctor entity to a JSON object
   Map<String, dynamic> toJson() {
@@ -31,8 +30,6 @@ class DoctorModel {
       'phone': phone,
       'address': address,
       'specialty': specialty,
-      'rating': rating,
-      'available': available,
     };
   }
 
@@ -45,8 +42,44 @@ class DoctorModel {
       phone: json['phone'] as String,
       address: json['address'] as String,
       specialty: json['specialty'] as String,
-      rating: json['rating'] as int,
+      price: json['price'] as double,
+      profile: ProfileModel.fromJson(json['profile']),
+    );
+  }
+}
+
+class ProfileModel {
+  ProfileModel({
+    required this.rating,
+    required this.available,
+    required this.patientStories,
+    required this.satisfaction,
+    required this.views,
+  });
+
+  final double rating;
+  final bool available;
+  final int patientStories;
+  final double satisfaction;
+  final int views;
+
+  Map<String, dynamic> toJson() {
+    return {
+      "rating": rating,
+      "available": available,
+      "patientStories": patientStories,
+      "satisfaction": satisfaction,
+      "views": views,
+    };
+  }
+
+  factory ProfileModel.fromJson(Map<String, String> json) {
+    return ProfileModel(
+      rating: json['rating'] as double,
       available: json['available'] as bool,
+      patientStories: json['patientStories'] as int,
+      satisfaction: json['satisfaction'] as double,
+      views: json['views'] as int,
     );
   }
 }

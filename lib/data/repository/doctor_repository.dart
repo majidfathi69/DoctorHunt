@@ -29,8 +29,14 @@ class FakeDoctorRepository implements DoctorRepository {
       address: faker.address.streetAddress(),
       specialty: faker.randomGenerator.element(
           ['Cardiology', 'Dermatology', 'Neurology', 'Oncology', 'Pediatrics']),
-      rating: faker.randomGenerator.decimal(min: 1, scale: 4).round(),
-      available: faker.randomGenerator.boolean(),
+      price: faker.randomGenerator.decimal(min: 99, scale: 999),
+      profile: ProfileModel(
+        rating: faker.randomGenerator.decimal(min: 1, scale: 4), 
+        available: true, 
+        patientStories: faker.randomGenerator.decimal(min: 1, scale: 999).round(), 
+        satisfaction: faker.randomGenerator.decimal(min: 0, scale: 100), 
+        views: faker.randomGenerator.decimal(min: 1, scale: 999).round(),
+      ),
     ),
   );
 
