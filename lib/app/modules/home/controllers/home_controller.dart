@@ -20,6 +20,13 @@ class HomeController extends GetxController {
   final _loadingPopularDoctors = true.obs;
   get loadingPopularDoctors => _loadingPopularDoctors;
 
+  final List<DoctorModel> _featureDoctors = [];
+  List<DoctorModel> get featureDoctors => _featureDoctors;
+
+  final _loadingFeatureDoctors = true.obs;
+  get loadingFeatureDoctors => _loadingFeatureDoctors;
+
+
   @override
   void onInit() {
     repository.fetchLiveDoctors().then((List<DoctorModel> doctors) {
@@ -33,6 +40,13 @@ class HomeController extends GetxController {
       _popularDoctors.addAll(doctors);
       _loadingPopularDoctors.value = false;
     });
+    
+    repository.fetchPopularDoctors().then((List<DoctorModel> doctors){
+      _featureDoctors.clear();
+      _featureDoctors.addAll(doctors);
+      _loadingFeatureDoctors.value = false;
+    });
+    
     super.onInit();
   }
 }

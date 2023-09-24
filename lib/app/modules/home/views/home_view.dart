@@ -49,6 +49,8 @@ class FeaturedDoctors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ctrl = Get.find<HomeController>();
+
     return Column(
       children: [
         Padding(
@@ -56,18 +58,13 @@ class FeaturedDoctors extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Feature Doctor',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
+              Text('Feature Doctor',
+                  style: Theme.of(context).textTheme.titleLarge),
               Row(
                 children: [
                   Text('See all',
                       style: Theme.of(context).textTheme.labelMedium),
-                  const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 8,
-                  )
+                  const Icon(Icons.arrow_forward_ios, size: 8)
                 ],
               ),
             ],
@@ -76,15 +73,20 @@ class FeaturedDoctors extends StatelessWidget {
         const SizedBox(height: 22),
         SizedBox(
           height: 130,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (context, count) {
-              return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: FeaturedDoctor(),
-              );
-            },
+          child: Obx(
+            () =>
+                ctrl.loadingFeatureDoctors.value || ctrl.featureDoctors.isEmpty
+                    ? Container()
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: ctrl.featureDoctors.length,
+                        itemBuilder: (context, count) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: FeaturedDoctor(ctrl.featureDoctors[count]),
+                          );
+                        },
+                      ),
           ),
         ),
       ],
@@ -93,8 +95,9 @@ class FeaturedDoctors extends StatelessWidget {
 }
 
 class FeaturedDoctor extends StatelessWidget {
-  const FeaturedDoctor({super.key});
+  const FeaturedDoctor(this.doctor, {super.key});
 
+  final DoctorModel doctor;
   @override
   build(BuildContext context) {
     return Container(
@@ -118,34 +121,37 @@ class FeaturedDoctor extends StatelessWidget {
                   children: [
                     Icon(Icons.star,
                         size: 15, color: Theme.of(context).colorScheme.primary),
-                    Text('7.0', style: Theme.of(context).textTheme.labelSmall),
+                    Text("${doctor.profile.rating.round()}",
+                        style: Theme.of(context).textTheme.labelSmall),
                   ],
                 )
               ],
             ),
           ),
           const SizedBox(height: 5),
-          Image.asset(featureDc),
+          CircleAvatar(radius: 27, backgroundImage: NetworkImage(doctor.avatarPath)),
           const SizedBox(height: 10),
           Column(
             children: [
-              Text('Dr. Crick', style: Theme.of(context).textTheme.titleSmall),
+              Text(doctor.name,
+                  style: Theme.of(context).textTheme.titleSmall, maxLines: 1),
               RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: '\$',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(color: Theme.of(context).primaryColor)),
-                    TextSpan(
-                        text: ' 25.00/ hours',
-                        style: Theme.of(context).textTheme.labelMedium),
-                  ],
-                ),
-              )
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: '\$',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                      color: Theme.of(context).primaryColor)),
+                          TextSpan(
+                              text: ' ${doctor.price.round()}/ hours',
+                              style: Theme.of(context).textTheme.labelMedium),
+                        ],
+                      ),
+                    ),
             ],
           ),
         ],
@@ -221,11 +227,11 @@ class PopularDoctor extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(12))),
       child: Column(
         children: [
-          Container(
-            width: 180,
-            height: 190,
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Image.asset(popularDc),
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+            child: Image.network(doctor.avatarPath,
+                width: 180, height: 190, fit: BoxFit.fitHeight),
           ),
           Column(
             children: [
@@ -333,7 +339,10 @@ class LiveDoctor extends StatelessWidget {
       height: 168,
       child: Stack(
         children: [
-          Image.asset(liveDc),
+          ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+              child: Image.network(doctor.avatarPath,
+                  width: 116, height: 168, fit: BoxFit.fitHeight)),
           Positioned(
             top: 11,
             left: 65,
