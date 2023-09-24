@@ -30,17 +30,36 @@ class FakeDoctorRepository implements DoctorRepository {
       specialty: faker.randomGenerator.element(
           ['Cardiology', 'Dermatology', 'Neurology', 'Oncology', 'Pediatrics']),
       price: faker.randomGenerator.decimal(min: 99, scale: 999),
+      avatarPath: "https://thronesapi.com/assets/images/${faker.randomGenerator.element([
+            'daenerys.jpg',
+            'sam.jpg',
+            'jon-snow.jpg',
+            'arya-stark.jpg',
+            'sansa-stark.jpeg',
+            'bran-stark.jpg',
+            'ned-stark.jpg',
+            'robert-baratheon.jpeg',
+            'jaime-lannister.jpg',
+            'cersei.jpg'
+          ])}",
       profile: ProfileModel(
-        rating: faker.randomGenerator.decimal(min: 1, scale: 4), 
-        available: true, 
-        patientStories: faker.randomGenerator.decimal(min: 1, scale: 999).round(), 
-        satisfaction: faker.randomGenerator.decimal(min: 0, scale: 100), 
+        rating: faker.randomGenerator.decimal(min: 1, scale: 4),
+        available: true,
+        patientStories:
+            faker.randomGenerator.decimal(min: 1, scale: 999).round(),
+        satisfaction: faker.randomGenerator.decimal(min: 0, scale: 100),
         views: faker.randomGenerator.decimal(min: 1, scale: 999).round(),
       ),
     ),
   );
 
-  final List<String> _specialties = ['Cardiology', 'Dermatology', 'Neurology', 'Oncology', 'Pediatrics'];
+  final List<String> _specialties = [
+    'Cardiology',
+    'Dermatology',
+    'Neurology',
+    'Oncology',
+    'Pediatrics'
+  ];
 
   final _duration = const Duration(seconds: 3);
 
@@ -62,7 +81,6 @@ class FakeDoctorRepository implements DoctorRepository {
     return _doctors;
   }
 
-  
   @override
   Future<List<DoctorModel>> fetchFeatureDoctors() async {
     await Future.delayed(_duration);
