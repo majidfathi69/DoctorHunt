@@ -11,6 +11,8 @@ abstract class DoctorRepository {
   Future<List<DoctorModel>> fetchPopularDoctors();
   Future<List<DoctorModel>> fetchFeatureDoctors();
   Future<List<String>> fetchAllSpecialties();
+  Future<List<DoctorModel>> findDoctors(String search);
+  Future<List<String>> fethAllSlots(String id, DateTime date);
 }
 
 final faker = Faker();
@@ -30,7 +32,8 @@ class FakeDoctorRepository implements DoctorRepository {
       specialty: faker.randomGenerator.element(
           ['Cardiology', 'Dermatology', 'Neurology', 'Oncology', 'Pediatrics']),
       price: faker.randomGenerator.decimal(min: 99, scale: 999),
-      avatarPath: "https://thronesapi.com/assets/images/${faker.randomGenerator.element([
+      avatarPath:
+          "https://thronesapi.com/assets/images/${faker.randomGenerator.element([
             'daenerys.jpg',
             'sam.jpg',
             'jon-snow.jpg',
@@ -53,7 +56,7 @@ class FakeDoctorRepository implements DoctorRepository {
     ),
   );
 
-  final List<String> _specialties = [
+  static const List<String> _specialties = [
     'Cardiology',
     'Dermatology',
     'Neurology',
@@ -61,7 +64,12 @@ class FakeDoctorRepository implements DoctorRepository {
     'Pediatrics'
   ];
 
-  final _duration = const Duration(seconds: 3);
+  static const _duration = Duration(seconds: 3);
+
+  final _timeSlots = List.generate(
+      10,
+      (index) =>
+          faker.randomGenerator.decimal(min: 13, scale: 19).round().toString());
 
   @override
   Future<DoctorModel> fetchDocotorProfile(String id) async {
@@ -91,5 +99,22 @@ class FakeDoctorRepository implements DoctorRepository {
   Future<List<String>> fetchAllSpecialties() async {
     await Future.delayed(_duration);
     return _specialties;
+  }
+
+  @override
+  Future<List<DoctorModel>> findDoctors(String search) async {
+    await Future.delayed(_duration);
+    return _doctors
+        .where((doctor) =>
+            doctor.name.contains(search) || doctor.specialty.contains(search))
+        .toList();
+  }
+
+  @override
+  Future<List<String>> fethAllSlots(String id, DateTime date) async {
+    await Future.delayed(_duration);
+    final int start = faker.randomGenerator.decimal(min: 0, scale: _timeSlots.length -1 ).round();
+    final int end = faker.randomGenerator.decimal(min: start, scale: _timeSlots.length -1 ).round();
+    return _timeSlots.sublist(start, end);
   }
 }
