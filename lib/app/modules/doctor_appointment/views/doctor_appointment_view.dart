@@ -189,7 +189,7 @@ class AvailableTime extends StatelessWidget {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(left: 9),
-                child: Container(
+                child: SizedBox(
                   height: 60,
                   width: 60,
                   child: TextButton(
@@ -219,7 +219,7 @@ class AvailableTime extends StatelessWidget {
               if (index == 1) {
                 return Padding(
                   padding: const EdgeInsets.only(left: 9),
-                  child: Container(
+                  child: SizedBox(
                     height: 60,
                     width: 60,
                     child: TextButton(
