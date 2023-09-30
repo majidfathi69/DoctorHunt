@@ -38,15 +38,27 @@ class TimeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.teal[100],
-      child: const Column(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(45),
+          color: Theme.of(context).colorScheme.onPrimary),
+      child: Column(
         children: [
-          SizedBox(height: 35),
-          AvailableTime(),
-          SizedBox(height: 38),
-          Reminder(),
-          SizedBox(height: 20),
-          // TODO: implement the button
+          const SizedBox(height: 35),
+          const AvailableTime(),
+          const SizedBox(height: 38),
+          const Reminder(),
+          const SizedBox(height: 25),
+          SizedBox(
+            width: 295,
+            height: 54,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6))),
+              child: const Text('Confirm'),
+            ),
+          ),
         ],
       ),
     );
@@ -58,9 +70,98 @@ class Reminder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 106,
-      color: Colors.amber,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text('Reminder Me Before',
+                style: Theme.of(context).textTheme.titleSmall),
+          ),
+          const SizedBox(height: 26),
+          Expanded(
+              child: ListView.separated(
+            itemCount: 10,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 9),
+                child: SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: TextButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(0),
+                        backgroundColor:
+                            Theme.of(context).colorScheme.primaryContainer),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '30',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                        Text(
+                          'Minit',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              if (index == 1) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 9),
+                  child: SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: TextButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(0),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '25',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimary),
+                          ),
+                          Text(
+                            'Minit',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimary),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              } else {
+                return Container();
+              }
+            },
+          ))
+        ],
+      ),
     );
   }
 }
@@ -70,9 +171,98 @@ class AvailableTime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 106,
-      color: Colors.amber,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text('Available Time',
+                style: Theme.of(context).textTheme.titleSmall),
+          ),
+          const SizedBox(height: 25),
+          Expanded(
+              child: ListView.separated(
+            itemCount: 10,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 9),
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  child: TextButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(0),
+                        backgroundColor:
+                            Theme.of(context).colorScheme.primaryContainer),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '10:00',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                        Text(
+                          'AM',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              if (index == 1) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 9),
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    child: TextButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(0),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '02:00',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimary),
+                          ),
+                          Text(
+                            'pM',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimary),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              } else {
+                return Container();
+              }
+            },
+          ))
+        ],
+      ),
     );
   }
 }
