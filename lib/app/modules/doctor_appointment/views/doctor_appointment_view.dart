@@ -39,7 +39,8 @@ class TimeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(45),
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(45), topRight: Radius.circular(45)),
           color: Theme.of(context).colorScheme.onPrimary),
       child: Column(
         children: [
