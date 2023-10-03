@@ -1,10 +1,14 @@
+import 'package:doctor_hunt/app/modules/doctor_appointment/views/thank_you_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
 
 class DoctorAppintmentView extends StatelessWidget {
   const DoctorAppintmentView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //  return ThankYouView();
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -53,7 +57,9 @@ class TimeWidget extends StatelessWidget {
             width: 295,
             height: 54,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.dialog(const ThankYouView());
+              },
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6))),
