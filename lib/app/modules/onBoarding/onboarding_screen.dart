@@ -118,9 +118,8 @@ class OnboardingScreen extends StatelessWidget {
                 child: SizedBox(
                   height: 385,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const SizedBox(height: 85),
                       SizedBox(
                         width: 289,
                         child: Column(
@@ -133,7 +132,6 @@ class OnboardingScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 52),
                       SizedBox(
                         height: 91,
                         child: Column(
@@ -147,14 +145,13 @@ class OnboardingScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 14),
-                            GestureDetector(
+                            InkWell(
                               onTap: mdl.skip,
                               child: const Text('Skip'),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 43),
                     ],
                   ),
                 ),
