@@ -1,3 +1,5 @@
+import 'package:doctor_hunt/app/modules/signup/bindings/signup_binding.dart';
+import 'package:doctor_hunt/app/modules/signup/views/signup_view.dart';
 import 'package:get/get.dart';
 
 import '../app/modules/onBoarding/onboarding_screen.dart';
@@ -34,6 +36,11 @@ class AppPages {
             ),
           ],
         ),
+            GetPage(
+              name: _Paths.SINGUP,
+              page: () => const SignupView(),
+              binding: SignupBinding(),
+            ),
       ],
     ),
   ];
