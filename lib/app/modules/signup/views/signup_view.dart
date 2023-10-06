@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignupView extends StatelessWidget {
@@ -8,13 +7,11 @@ class SignupView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-       
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('lib/assets/image/background.png'),
                 fit: BoxFit.cover)),
         child: ListView(
-          
           children: const [
             SizedBox(height: 150),
             Center(child: SizedBox(width: 285, child: HeadlineWidget())),
@@ -29,23 +26,55 @@ class SignupView extends StatelessWidget {
 }
 
 class SignupTabWidget extends StatelessWidget {
-  const SignupTabWidget({
-    super.key
+  const SignupTabWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        SizedBox(
+          width: 339,
+          height: 53,
+          child: SocialmediasWidget(),
+        ),
+        SizedBox(height: 30),
+        SizedBox(
+          height: 313,
+          child: SignupFormWidget(),
+        )
+      ],
+    );
+  }
+}
+
+class SignupFormWidget extends StatelessWidget {
+  const SignupFormWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
+class SocialmediasWidget extends StatelessWidget {
+  const SocialmediasWidget({
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text('data');
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
 
 class HeadlineWidget extends StatelessWidget {
-  const HeadlineWidget({
-    super.key
-  });
+  const HeadlineWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text('data');
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
