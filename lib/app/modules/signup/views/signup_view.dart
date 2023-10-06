@@ -53,7 +53,7 @@ class SignupFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    throw UnimplementedError();
+    return Text('data');
   }
 }
 
@@ -64,8 +64,48 @@ class SocialmediasWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SizedBox(
+          height: 53,
+          width: 159.03,
+          child: TextButton(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12))),
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('lib/assets/image/google.png'),
+                const SizedBox(width: 15),
+                const Text('Google')
+              ],
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 53,
+          width: 159.03,
+          child: TextButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12))),
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('lib/assets/image/facebook.png'),
+                  const SizedBox(width: 15),
+                  const Text('Facebook')
+                ],
+              )),
+        ),
+      ],
+    );
   }
 }
 
@@ -74,7 +114,17 @@ class HeadlineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Column(
+      children: [
+        Text('Join us to startsearching',
+            style: Theme.of(context).textTheme.headlineSmall),
+        const SizedBox(height: 10),
+        Text(
+          'You can search c ourse, apply course and find scholarship for abroad studies',
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
   }
 }
