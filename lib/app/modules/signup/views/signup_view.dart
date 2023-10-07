@@ -12,12 +12,20 @@ class SignupView extends StatelessWidget {
                 image: AssetImage('lib/assets/image/background.png'),
                 fit: BoxFit.cover)),
         child: ListView(
-          children: const [
-            SizedBox(height: 150),
-            Center(child: SizedBox(width: 285, child: HeadlineWidget())),
-            SizedBox(height: 75),
-            Center(child: SizedBox(width: 335, child: SignupTabWidget())),
-            SizedBox(height: 35),
+          children: [
+            const SizedBox(height: 150),
+            const Center(child: SizedBox(width: 285, child: HeadlineWidget())),
+            const SizedBox(height: 75),
+            const Center(child: SizedBox(width: 335, child: SignupTabWidget())),
+            const SizedBox(height: 35),
+            Center(
+              child: InkWell(
+                onTap: () {},
+                child: Text('Have an account? Log in',
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.primary)),
+              ),
+            )
           ],
         ),
       ),
@@ -47,13 +55,120 @@ class SignupTabWidget extends StatelessWidget {
   }
 }
 
-class SignupFormWidget extends StatelessWidget {
+class SignupFormWidget extends StatefulWidget {
   const SignupFormWidget({super.key});
 
   @override
+  State<SignupFormWidget> createState() => _SignupFormWidgetState();
+}
+
+class _SignupFormWidgetState extends State<SignupFormWidget> {
+  var _isChecked = false;
+  var _obscureText = true;
+
+  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Text('data');
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: 54,
+          child: TextField(
+            keyboardType: TextInputType.name,
+            decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary, width: 1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              hintText: 'Name',
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 54,
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary, width: 1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              hintText: 'Email',
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 54,
+          child: TextField(
+            keyboardType: TextInputType.none,
+            obscureText: _obscureText,
+            decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary, width: 1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              hintText: 'Password',
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+                icon: _obscureText
+                    ? const Icon(Icons.visibility_off)
+                    : const Icon(Icons.visibility),
+              ),
+            ),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              width: 16,
+              height: 16,
+              child: Checkbox(
+                value: _isChecked,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8))),
+                onChanged: (bool? value) {
+                  setState(() {
+                    _isChecked = value!;
+                  });
+                },
+              ),
+            ),
+            //SizedBox(width: 11),
+            Text('I agree with the Terms of Service & Privacy Policy',
+                style: Theme.of(context).textTheme.bodySmall)
+          ],
+        ),
+        SizedBox(
+          width: 295,
+          height: 54,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12))),
+            child: const Text('Sign up'),
+          ),
+        )
+      ],
+    );
   }
 }
 
@@ -116,8 +231,11 @@ class HeadlineWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Join us to startsearching',
-            style: Theme.of(context).textTheme.headlineSmall),
+        Text(
+          'Join us to start searching',
+          style: Theme.of(context).textTheme.headlineSmall,
+          textAlign: TextAlign.center,
+        ),
         const SizedBox(height: 10),
         Text(
           'You can search c ourse, apply course and find scholarship for abroad studies',
