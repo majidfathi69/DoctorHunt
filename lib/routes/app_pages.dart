@@ -1,3 +1,5 @@
+import 'package:doctor_hunt/app/modules/login/bindings/login_binding.dart';
+import 'package:doctor_hunt/app/modules/login/views/login_view.dart';
 import 'package:get/get.dart';
 
 import '../app/modules/onBoarding/onboarding_screen.dart';
@@ -34,6 +36,11 @@ class AppPages {
             ),
           ],
         ),
+        GetPage(
+          name: _Paths.LOGIN,
+          page: () => const LoginView(),
+          binding: LoginBinding(),
+        )
       ],
     ),
   ];
