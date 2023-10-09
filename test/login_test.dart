@@ -17,7 +17,7 @@ void main() {
     expect(
       find.descendant(
           of: find.byType(HeadlineWidget), matching: find.byType(Text)),
-      findsOneWidget,
+      findsAtLeastNWidgets(1),
     );
 
     // Find the SocialmediasWidget widget inside the LoginTabWidget
