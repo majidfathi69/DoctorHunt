@@ -4,6 +4,40 @@ import 'package:doctor_hunt/app/modules/login/views/forgot_password.dart';
 
 void main() {
   
+  testWidgets('reset password tab', (tester) async {
+    await tester.pumpWidget(const MaterialApp(home: ResetPasswordTabWidget()));
+
+    // Find the HeadlineWidget by type
+    expect(find.byType(HeadlineWidget), findsOneWidget);
+
+    // Find the ResetPasswordFormWidget by type
+    expect(find.byType(ResetPasswordFormWidget), findsOneWidget);
+
+    // Find the Text widget inside the HeadlineWidget
+    expect(
+      find.descendant(
+          of: find.byType(HeadlineWidget), matching: find.byType(Text)),
+      findsAtLeastNWidgets(1),
+    );
+
+    expect(
+      find.descendant(
+          of: find.byType(ResetPasswordFormWidget),
+          matching: find.byType(TextField)),
+      findsNWidgets(2),
+    );
+
+    expect(
+      find.descendant(
+          of: find.byType(ResetPasswordFormWidget),
+          matching: find.descendant(
+            of: find.byType(ElevatedButton),
+            matching: find.text('Update Password'),
+          )),
+      findsOneWidget,
+    );
+  });
+
   testWidgets('enter digits tab', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: EnterDigitsTabWidget()));
 
