@@ -17,8 +17,8 @@ class ForgotPassTabWidget extends StatelessWidget {
               child: SizedBox(
                 width: 290,
                 child: HeadlineWidget(
-                  title: null,
-                  text: null,
+                  title: '',
+                  text: '',
                 ),
               ),
             ),
@@ -40,8 +40,8 @@ class ForgotPassTabWidget extends StatelessWidget {
 }
 
 class HeadlineWidget extends StatelessWidget {
-  final String? title;
-  final String? text;
+  final String title;
+  final String text;
 
   const HeadlineWidget({super.key, required this.text, required this.title});
 
@@ -77,8 +77,8 @@ class EnterDigitsTabWidget extends StatelessWidget {
               child: SizedBox(
                   width: 290,
                   child: HeadlineWidget(
-                    title: null,
-                    text: null,
+                    title: '',
+                    text: '',
                   )),
             ),
             SizedBox(height: 30),
@@ -121,8 +121,8 @@ class ResetPasswordTabWidget extends StatelessWidget {
               child: SizedBox(
                   width: 315,
                   child: HeadlineWidget(
-                    title: null,
-                    text: null,
+                    title: '',
+                    text: '',
                   )),
             ),
             SizedBox(height: 30),
