@@ -14,11 +14,11 @@ class LoginView extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            SizedBox(height: 150),
-            Center(child: SizedBox(width: 285, child: HeadlineWidget())),
-            SizedBox(height: 55),
-            Center(child: SizedBox(width: 339, child: LoginTabWidget())),
-            SizedBox(height: 35),
+            const SizedBox(height: 150),
+            const Center(child: SizedBox(width: 285, child: HeadlineWidget())),
+            const SizedBox(height: 55),
+            const Center(child: SizedBox(width: 339, child: LoginTabWidget())),
+            const SizedBox(height: 35),
             SizedBox(
               height: 64,
               child: Column(
@@ -123,7 +123,6 @@ class LoginFormWidget extends StatefulWidget {
 }
 
 class _LoginFormWidgetState extends State<LoginFormWidget> {
-  var _isChecked = false;
   var _obscureText = true;
   @override
   Widget build(BuildContext context) {
