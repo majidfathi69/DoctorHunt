@@ -8,8 +8,12 @@ class ForgotPassTabWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
-        color: Theme.of(context).colorScheme.onPrimary,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30))),
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -112,8 +116,12 @@ class EnterDigitsTabWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
-        color: Theme.of(context).colorScheme.onPrimary,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30))),
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -207,8 +215,12 @@ class ResetPasswordTabWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
-        color: Theme.of(context).colorScheme.onPrimary,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30))),
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -251,7 +263,7 @@ class _ResetPasswordFormWidgetState extends State<ResetPasswordFormWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
