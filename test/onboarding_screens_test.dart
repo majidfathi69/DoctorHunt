@@ -22,7 +22,7 @@ void main() {
 
     expect(
       find.descendant(
-          of: find.byType(SkipStartedWidgetButtons),
+          of: find.byType(SkipStartedButtonsWidget),
           matching: find.descendant(
             of: find.byType(ElevatedButton),
             matching: find.text('Get Started'),
@@ -32,7 +32,7 @@ void main() {
 
     expect(
       find.descendant(
-          of: find.byType(SkipStartedWidgetButtons),
+          of: find.byType(SkipStartedButtonsWidget),
           matching: find.descendant(
             of: find.byType(InkWell),
             matching: find.text('Skip'),
@@ -59,7 +59,7 @@ void main() {
 
     expect(
       find.descendant(
-          of: find.byType(SkipStartedWidgetButtons),
+          of: find.byType(SkipStartedButtonsWidget),
           matching: find.descendant(
             of: find.byType(ElevatedButton),
             matching: find.text('Get Started'),
@@ -69,7 +69,7 @@ void main() {
 
     expect(
       find.descendant(
-          of: find.byType(SkipStartedWidgetButtons),
+          of: find.byType(SkipStartedButtonsWidget),
           matching: find.descendant(
             of: find.byType(InkWell),
             matching: find.text('Skip'),
@@ -96,7 +96,7 @@ void main() {
 
     expect(
       find.descendant(
-          of: find.byType(SkipStartedWidgetButtons),
+          of: find.byType(SkipStartedButtonsWidget),
           matching: find.descendant(
             of: find.byType(ElevatedButton),
             matching: find.text('Get Started'),
@@ -106,7 +106,7 @@ void main() {
 
     expect(
       find.descendant(
-          of: find.byType(SkipStartedWidgetButtons),
+          of: find.byType(SkipStartedButtonsWidget),
           matching: find.descendant(
             of: find.byType(InkWell),
             matching: find.text('Skip'),
