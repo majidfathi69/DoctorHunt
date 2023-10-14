@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 
-import '../app/modules/home/bindings/home_binding.dart';
-import '../app/modules/home/views/home_view.dart';
 import '../app/modules/onBoarding/onboarding_screen.dart';
 import '../app/modules/root/bindings/root_binding.dart';
 import '../app/modules/root/views/root_view.dart';
