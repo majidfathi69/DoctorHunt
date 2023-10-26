@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../utils/constants.dart';
-import '../controllers/home_controller.dart';
+import '../../../widgets/headline_widget.dart';
+import '../../../widgets/stars_widget.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
@@ -15,26 +15,32 @@ class HomeScreen extends GetView<HomeController> {
         children: [
           const Align(
             alignment: Alignment.topCenter,
-            child: UserProfile(),
+            child: SizedBox(height: 156, child: ProfileWidget()),
           ),
           Positioned.fill(
             top: 210,
             child: ListView(
               children: const [
-                LiveDoctors(),
+                SizedBox(height: 206, child: LiveDoctorsWidget()),
                 SizedBox(height: 30),
-                DoctorSpecialties(),
+                SizedBox(height: 90, child: DoctorSpecialtiesWidget()),
                 SizedBox(height: 30),
-                PopularDoctors(),
+                SizedBox(height: 307, child: PopularDoctorsWidget()),
                 SizedBox(height: 30),
-                FeaturedDoctors(),
+                SizedBox(height: 168, child: FeatureDoctorsWidget()),
                 SizedBox(height: 30),
               ],
             ),
           ),
-          const Positioned(
+          Positioned(
             top: 126,
-            child: SearchField(),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: SearchTextField(),
+              ),
+            ),
           ),
         ],
       ),
@@ -42,36 +48,18 @@ class HomeScreen extends GetView<HomeController> {
   }
 }
 
-class FeaturedDoctors extends StatelessWidget {
-  const FeaturedDoctors({super.key});
+class FeatureDoctorsWidget extends StatelessWidget {
+  const FeatureDoctorsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Feature Doctor',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              Row(
-                children: [
-                  Text('See all',
-                      style: Theme.of(context).textTheme.labelMedium),
-                  const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 8,
-                  )
-                ],
-              ),
-            ],
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget('Feature Doctor'),
         ),
-        const SizedBox(height: 22),
+        const SizedBox(height: 10),
         SizedBox(
           height: 130,
           child: ListView.builder(
@@ -79,8 +67,9 @@ class FeaturedDoctors extends StatelessWidget {
             itemCount: 10,
             itemBuilder: (context, count) {
               return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: FeaturedDoctor(),
+                padding: EdgeInsets.symmetric(horizontal: 7.5),
+                child: SizedBox(
+                    width: 96, height: 130, child: FeatureDoctorWidget()),
               );
             },
           ),
@@ -90,8 +79,8 @@ class FeaturedDoctors extends StatelessWidget {
   }
 }
 
-class FeaturedDoctor extends StatelessWidget {
-  const FeaturedDoctor({super.key});
+class FeatureDoctorWidget extends StatelessWidget {
+  const FeatureDoctorWidget({super.key});
 
   @override
   build(BuildContext context) {
@@ -101,9 +90,10 @@ class FeaturedDoctor extends StatelessWidget {
       width: 96,
       height: 130,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            height: 12.42,
+            height: 16,
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,15 +106,14 @@ class FeaturedDoctor extends StatelessWidget {
                   children: [
                     Icon(Icons.star,
                         size: 15, color: Theme.of(context).colorScheme.primary),
+                        const SizedBox(width: 3.5),
                     Text('7.0', style: Theme.of(context).textTheme.labelSmall),
                   ],
                 )
               ],
             ),
           ),
-          const SizedBox(height: 5),
           Image.asset(featureDc),
-          const SizedBox(height: 10),
           Column(
             children: [
               Text('Dr. Crick', style: Theme.of(context).textTheme.titleSmall),
@@ -152,45 +141,26 @@ class FeaturedDoctor extends StatelessWidget {
   }
 }
 
-class PopularDoctors extends StatelessWidget {
-  const PopularDoctors({super.key});
+class PopularDoctorsWidget extends StatelessWidget {
+  const PopularDoctorsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Popular Doctor',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              Row(
-                children: [
-                  Text('See all',
-                      style: Theme.of(context).textTheme.labelMedium),
-                  const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 8,
-                  )
-                ],
-              ),
-            ],
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget('Popular Doctor'),
         ),
-        Container(
-          color: Theme.of(context).colorScheme.onSecondary,
+        SizedBox(
           height: 264,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, count) {
               return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: PopularDoctor(),
+                padding: EdgeInsets.symmetric(horizontal: 7.5),
+                child: PopularDoctorWidget(),
               );
             },
           ),
@@ -200,8 +170,8 @@ class PopularDoctors extends StatelessWidget {
   }
 }
 
-class PopularDoctor extends StatelessWidget {
-  const PopularDoctor({super.key});
+class PopularDoctorWidget extends StatelessWidget {
+  const PopularDoctorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -226,17 +196,7 @@ class PopularDoctor extends StatelessWidget {
                       style: Theme.of(context).textTheme.labelMedium),
                 ],
               ),
-              SizedBox(
-                height: 6,
-                child: Row(
-                  children: [
-                    for (var i = 0; i < 5; i++)
-                      Icon(Icons.star,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 12)
-                  ],
-                ),
-              ),
+              const SizedBox(child: StarsWidget(20)),
             ],
           ),
         ],
@@ -245,8 +205,8 @@ class PopularDoctor extends StatelessWidget {
   }
 }
 
-class DoctorSpecialties extends StatelessWidget {
-  const DoctorSpecialties({super.key});
+class DoctorSpecialtiesWidget extends StatelessWidget {
+  const DoctorSpecialtiesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -257,8 +217,8 @@ class DoctorSpecialties extends StatelessWidget {
         itemCount: 10,
         itemBuilder: (context, count) {
           return const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 6),
-            child: DoctorSpecialty(),
+            padding: EdgeInsets.symmetric(horizontal: 7.5),
+            child: DoctorSpecialtyWidget(),
           );
         },
       ),
@@ -266,8 +226,8 @@ class DoctorSpecialties extends StatelessWidget {
   }
 }
 
-class DoctorSpecialty extends StatelessWidget {
-  const DoctorSpecialty({super.key});
+class DoctorSpecialtyWidget extends StatelessWidget {
+  const DoctorSpecialtyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -279,8 +239,8 @@ class DoctorSpecialty extends StatelessWidget {
   }
 }
 
-class LiveDoctors extends StatelessWidget {
-  const LiveDoctors({super.key});
+class LiveDoctorsWidget extends StatelessWidget {
+  const LiveDoctorsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -292,7 +252,7 @@ class LiveDoctors extends StatelessWidget {
           child: Text('Live Doctor',
               style: Theme.of(context).textTheme.titleLarge),
         ),
-        const SizedBox(height: 13),
+        const SizedBox(height: 10),
         SizedBox(
           height: 168,
           child: ListView.builder(
@@ -300,8 +260,9 @@ class LiveDoctors extends StatelessWidget {
             itemCount: 10,
             itemBuilder: (context, count) {
               return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                child: LiveDoctor(),
+                padding: EdgeInsets.symmetric(horizontal: 7.5),
+                child: SizedBox(
+                    width: 116, height: 168, child: LiveDoctorWidget()),
               );
             },
           ),
@@ -311,13 +272,13 @@ class LiveDoctors extends StatelessWidget {
   }
 }
 
-class LiveDoctor extends StatelessWidget {
-  const LiveDoctor({super.key});
+class LiveDoctorWidget extends StatelessWidget {
+  const LiveDoctorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 116.48,
+      width: 116,
       height: 168,
       child: Stack(
         children: [
@@ -326,9 +287,11 @@ class LiveDoctor extends StatelessWidget {
             top: 11,
             left: 65,
             child: Container(
-              width: 45,
+              width: 52,
               height: 18,
-              color: Theme.of(context).colorScheme.primaryContainer,
+              decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: const BorderRadius.all(Radius.circular(3))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -357,13 +320,12 @@ class LiveDoctor extends StatelessWidget {
   }
 }
 
-class SearchField extends StatelessWidget {
-  const SearchField({super.key});
+class SearchTextField extends StatelessWidget {
+  const SearchTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 335,
       height: 54,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
@@ -384,8 +346,17 @@ class SearchField extends StatelessWidget {
   }
 }
 
-class UserProfile extends StatelessWidget {
-  const UserProfile({super.key});
+class ProfileImageWidget extends StatelessWidget {
+  const ProfileImageWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(userAvatar, width: 60, height: 60);
+  }
+}
+
+class ProfileWidget extends StatelessWidget {
+  const ProfileWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -395,24 +366,26 @@ class UserProfile extends StatelessWidget {
             bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
         color: Theme.of(context).colorScheme.primary,
       ),
-      height: 150,
-      padding: const EdgeInsets.only(right: 20, top: 36, left: 20),
+      height: 156,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text('Hi Handwerker! ',
                   style: Theme.of(context).textTheme.titleLarge),
-              const SizedBox(height: 6),
+              const SizedBox(height: 5),
               Text('Find Your Doctor',
                   style: Theme.of(context).textTheme.headlineMedium),
             ],
           ),
-          Image.asset(userAvatar, width: 60, height: 60),
+          const SizedBox(width: 60, height: 60, child: ProfileImageWidget()),
         ],
       ),
     );

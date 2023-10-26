@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:doctor_hunt/app/modules/home/views/home_view.dart';
+import 'package:doctor_hunt/app/widgets/headline_widget.dart';
 
 void main() {
   testWidgets('05_Home screen', (tester) async {
@@ -15,14 +16,12 @@ void main() {
 
     expect(find.byType(PopularDoctorsWidget), findsOneWidget);
 
-    expect(find.byType(FeatureDoctorsWidget), findsOneWidget);
-
     //ProfileWidget
     expect(
       find.descendant(
           of: find.byType(ProfileWidget),
           matching: find.byType(ProfileImageWidget)),
-      findsNWidgets(2),
+      findsNWidgets(1),
     );
 
     expect(
@@ -36,7 +35,7 @@ void main() {
     expect(
       find.descendant(
         of: find.byType(LiveDoctorsWidget),
-        matching: find.text('Live Doctors'),
+        matching: find.text('Live Doctor'),
       ),
       findsOneWidget,
     );
@@ -84,6 +83,14 @@ void main() {
     );
 
     //FeatureDoctorsWidget
+    await tester.dragUntilVisible(
+        find.byType(FeatureDoctorsWidget), // what you want to find
+        find.byType(HomeScreen), // widget you want to scroll
+        const Offset(0, -250), // delta to move
+    );
+
+    expect(find.byType(FeatureDoctorsWidget), findsOneWidget);
+
     expect(
       find.descendant(
         of: find.byType(FeatureDoctorsWidget),
