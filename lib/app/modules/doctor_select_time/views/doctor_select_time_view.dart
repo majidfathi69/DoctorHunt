@@ -11,14 +11,14 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
     return Scaffold(
       body: ListView(
         children: const [
-          DoctorDetails(),
+          SelectedDoctorWidget(),
           SizedBox(height: 24),
-          DoctorTimeBoard(),
+          DayTabsWidget(),
           SizedBox(height: 18),
-          Center(child: SelectedTimeBoard()),
+          Center(child: TodayTimeWidget()),
           SizedBox(height: 17),
-          Center(child: NextAvailability()),
-          AvailableTimes(),
+          Center(child: NoSlotsAvailableWidget()),
+          AvailbleSlotsWidget(),
         ],
       ),
       appBar: AppBar(),
@@ -26,166 +26,150 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
   }
 }
 
-class AvailableTimes extends StatelessWidget {
-  const AvailableTimes({super.key});
+class AvailbleSlotsWidget extends StatelessWidget {
+  const AvailbleSlotsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        Container(
-          width: 335,
-          height: 125,
-          margin: const EdgeInsets.all(20),
-          color: Colors.transparent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Afternoon 7 slots',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(
-                height: 11,
-              ),
-              Expanded(
-                child: GridView.count(
-                  childAspectRatio: 2,
-                  //TODO: size textButton
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  crossAxisCount: 4,
-                  children: [
-                    ...List.generate(
-                      6,
-                      (index) {
-                        return ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            padding: MaterialStateProperty.all(
-                                const EdgeInsets.all(11)),
-                            fixedSize:
-                                MaterialStateProperty.all(const Size(76, 40)),
-                            backgroundColor: MaterialStateProperty.all(
-                                Theme.of(context).colorScheme.primaryContainer),
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6)),
-                            ),
-                          ),
-                          child: Text(
-                            '1:00 PM',
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary),
-                            //TODO : unkowe fontSize
-                          ),
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        padding:
-                            MaterialStateProperty.all(const EdgeInsets.all(11)),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6)),
-                        ),
-                      ),
-                      child: Text(
-                        '2:00 PM',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimary),
-                        //TODO : unkowe fontSize
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.all(20),
-          width: 335,
-          height: 123,
-          color: Colors.transparent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Evening 5 slots',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(
-                height: 9,
-              ),
-              Expanded(
-                child: GridView.count(
-                  //physics: BouncingScrollPhysics(),
-                  childAspectRatio: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  crossAxisCount: 4,
-                  children: [
-                    ...List.generate(
-                      5,
-                      (index) {
-                        return ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            padding: MaterialStateProperty.all(
-                                const EdgeInsets.all(11)),
-                            fixedSize:
-                                MaterialStateProperty.all(const Size(76, 40)),
-                            backgroundColor: MaterialStateProperty.all(
-                                Theme.of(context).colorScheme.primaryContainer),
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6)),
-                            ),
-                          ),
-                          child: Text(
-                            '5:00 PM',
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary),
-                            //TODO : unkowe fontSize
-                          ),
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        padding:
-                            MaterialStateProperty.all(const EdgeInsets.all(11)),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6)),
-                        ),
-                      ),
-                      child: Text(
-                        '5:00 PM',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimary),
-                        //TODO : unkowe fontSize
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+        AfternoonSlotsWidget(),
+        EveningSlotsWidget(),
       ],
     );
   }
 }
 
-class NextAvailability extends StatelessWidget {
-  const NextAvailability({super.key});
+class EveningSlotsWidget extends StatelessWidget {
+  const EveningSlotsWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(20),
+      width: 335,
+      height: 123,
+      color: Colors.transparent,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Evening 5 slots',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(
+            height: 9,
+          ),
+          Expanded(
+            child: GridView.count(
+              //physics: BouncingScrollPhysics(),
+              childAspectRatio: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              crossAxisCount: 4,
+              children: [
+                ...List.generate(
+                  5,
+                  (index) {
+                    return TimeSlotWidget(
+                      colorButton:
+                          Theme.of(context).colorScheme.primaryContainer,
+                      colorText: Theme.of(context).colorScheme.primary,
+                    );
+                  },
+                ),
+                const TimeSlotWidget()
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class AfternoonSlotsWidget extends StatelessWidget {
+  const AfternoonSlotsWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 335,
+      height: 125,
+      margin: const EdgeInsets.all(20),
+      color: Colors.transparent,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Afternoon 7 slots',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(
+            height: 11,
+          ),
+          Expanded(
+            child: GridView.count(
+              childAspectRatio: 2,
+              //TODO: size textButton
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              crossAxisCount: 4,
+              children: [
+                ...List.generate(
+                  6,
+                  (index) {
+                    return TimeSlotWidget(
+                      colorButton:
+                          Theme.of(context).colorScheme.primaryContainer,
+                      colorText: Theme.of(context).colorScheme.primary,
+                    );
+                  },
+                ),
+                const TimeSlotWidget()
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TimeSlotWidget extends StatelessWidget {
+  const TimeSlotWidget({super.key, this.colorButton, this.colorText});
+  final Color? colorButton;
+  final Color? colorText;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all(const EdgeInsets.all(11)),
+        fixedSize: MaterialStateProperty.all(const Size(76, 40)),
+        backgroundColor: MaterialStateProperty.all(colorButton),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+        ),
+      ),
+      child: Text(
+        '1:00 PM',
+        style: TextStyle(color: colorText),
+        //TODO : unkowe fontSize
+      ),
+    );
+  }
+}
+
+class NoSlotsAvailableWidget extends StatelessWidget {
+  const NoSlotsAvailableWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -236,19 +220,19 @@ class NextAvailability extends StatelessWidget {
   }
 }
 
-class SelectedTimeBoard extends StatelessWidget {
-  const SelectedTimeBoard({super.key});
+class TodayTimeWidget extends StatelessWidget {
+  const TodayTimeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 64,
       width: 135,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('Today,23Feb', style: Theme.of(context).textTheme.titleLarge),
+          Text('Today, 23 Feb', style: Theme.of(context).textTheme.titleLarge),
           //TODO: tiileLarge
           const SizedBox(
             height: 16,
@@ -263,27 +247,75 @@ class SelectedTimeBoard extends StatelessWidget {
   }
 }
 
-class DoctorTimeBoard extends StatelessWidget {
-  const DoctorTimeBoard({super.key});
+class DayTabsWidget extends StatelessWidget {
+  const DayTabsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       height: 54,
       width: double.infinity,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Padding(
+      child: SelectTimeBtnWidget(),
+    );
+  }
+}
+
+class SelectTimeBtnWidget extends StatelessWidget {
+  const SelectTimeBtnWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.fromLTRB(4, 10, 4, 4),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6)),
+              //backgroundColor: Theme.of(context).colorScheme.primary,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Text(
+                    'Tomorrow, 24 Feb',
+                    style: Theme.of(context).primaryTextTheme.titleMedium,
+                  ),
+                ),
+                Text(
+                  '9 slots available',
+                  style: Theme.of(context).primaryTextTheme.bodySmall,
+                ),
+              ],
+            ),
+          ), // TODO: sec minimon size
+        );
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return Padding(
             padding: const EdgeInsets.only(left: 16),
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.fromLTRB(4, 10, 4, 4),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6)),
-                //backgroundColor: Theme.of(context).colorScheme.primary,
-              ),
+                  padding: const EdgeInsets.fromLTRB(4, 10, 4, 4),
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      style: BorderStyle.solid,
+                    ),
+                    borderRadius: BorderRadius.circular(4),
+                  )),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -291,62 +323,25 @@ class DoctorTimeBoard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 8, right: 8),
                     child: Text(
-                      'Tomorrow, 24 Feb',
-                      style: Theme.of(context).primaryTextTheme.titleMedium,
+                      'Today, 23 Feb',
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                   Text(
-                    '9 slots available',
-                    style: Theme.of(context).primaryTextTheme.bodySmall,
+                    'No slots available',
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
               ),
-            ), // TODO: sec minimon size
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(4, 10, 4, 4),
-                    backgroundColor: Colors.transparent,
-                    shadowColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        style: BorderStyle.solid,
-                      ),
-                      borderRadius: BorderRadius.circular(4),
-                    )),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8),
-                      child: Text(
-                        'Today, 23 Feb',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    ),
-                    Text(
-                      'No slots available',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
-                ),
-              ));
-        },
-        itemCount: 20,
-      ),
+            ));
+      },
+      itemCount: 20,
     );
   }
 }
 
-class DoctorDetails extends StatelessWidget {
-  const DoctorDetails({super.key});
+class SelectedDoctorWidget extends StatelessWidget {
+  const SelectedDoctorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

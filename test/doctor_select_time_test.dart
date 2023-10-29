@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:doctor_hunt/app/modules/doctor_select_time/views/doctor_select_time_view.dart';
 import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
-import 'package:doctor_hunt/app/widgets/search_text_field.dart';
 
 void main() {
   testWidgets('09_Doctor Select Time screen', (tester) async {
@@ -36,9 +35,9 @@ void main() {
 
     //AvailbleSlotsWidget
     await tester.dragUntilVisible(
-        find.byType(AvailbleSlotsWidget), // what you want to find
-        find.byType(DoctorSelectTimeView), // widget you want to scroll
-        const Offset(0, -250), // delta to move
+      find.byType(AvailbleSlotsWidget), // what you want to find
+      find.byType(DoctorSelectTimeView), // widget you want to scroll
+      const Offset(0, -250), // delta to move
     );
 
     expect(
@@ -64,7 +63,7 @@ void main() {
       ),
       findsAtLeastNWidgets(0),
     );
-    
+
     expect(
       find.descendant(
         of: find.byType(EveningSlotsWidget),
