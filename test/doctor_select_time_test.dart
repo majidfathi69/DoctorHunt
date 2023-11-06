@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:doctor_hunt/app/modules/doctor_select_time/views/doctor_select_time_view.dart';
 import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
-import 'package:doctor_hunt/app/widgets/search_text_field.dart';
 import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 
 void main() {

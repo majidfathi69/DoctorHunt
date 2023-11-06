@@ -1,3 +1,4 @@
+import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -365,25 +366,7 @@ class SelectedDoctorWidget extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodySmall),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            for (int i = 0; i < 4; i++)
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .tertiaryContainer,
-                            ),
-                            //TODO : unknow color
-                          ],
-                        ),
+                        const StarsWidget()
                       ],
                     ),
                     Icon(
