@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:doctor_hunt/app/modules/doctor_select_time/views/doctor_select_time_view.dart';
 import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
 import 'package:doctor_hunt/app/widgets/search_text_field.dart';
+import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 
 void main() {
   testWidgets('09_Doctor Select Time screen', (tester) async {
@@ -22,6 +23,15 @@ void main() {
     //AppbarWidget
     expect(find.text('Select Time'), findsOneWidget);
 
+    //SelectedDoctorWidget
+    expect(
+      find.descendant(
+        of: find.byType(SelectedDoctorWidget),
+        matching: find.byType(StarsWidget),
+      ),
+      findsOneWidget,
+    );
+
     //DayTabsWidget
     expect(
       find.descendant(
@@ -32,7 +42,13 @@ void main() {
     );
 
     //NoSlotsAvailableWidget
-    expect(find.text('No slots available'), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byType(NoSlotsAvailableWidget),
+        matching: find.text('No slots available'),
+      ),
+      findsOneWidget,
+    );
 
     //AvailbleSlotsWidget
     await tester.dragUntilVisible(
