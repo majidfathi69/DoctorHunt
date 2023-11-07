@@ -1,3 +1,4 @@
+import 'package:doctor_hunt/app/widgets/headline_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +13,7 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
       body: ListView(
         children: const [
           // TODO: sec1
-          PopularDoctors(),
+          SizedBox(height: 307, child: PopularDoctorsWidget()),
           SizedBox(height: 20),
           // TODO: sec2
           Categorys(),
@@ -154,118 +155,88 @@ class Category extends StatelessWidget {
   }
 }
 
-class PopularDoctors extends StatelessWidget {
-  const PopularDoctors({
+class PopularDoctorsWidget extends StatelessWidget {
+  const PopularDoctorsWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 243,
-      width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Popular Doctor',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'See all',
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                  const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 10,
-                  ),
-                  //TODO: unknow color Icon
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 15),
-          // TODO: sizedbox figma 15 but overflowe mishe
-          SizedBox(
-            height: 200,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.only(right: 12),
-                  child: PopularDoctor(),
-                );
-              },
-            ),
-          )
-        ],
-      ),
+    return const Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        HeadlineWidget(),
+        SizedBox(height: 15),
+        SizedBox(
+          height: 264,
+          child: PopularDoctorWidget(),
+        )
+      ],
     );
   }
 }
 
-class PopularDoctor extends StatelessWidget {
-  const PopularDoctor({
+class PopularDoctorWidget extends StatelessWidget {
+  const PopularDoctorWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 136,
-      height: 200,
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(12)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.asset('lib/assets/image/image.png', height: 131, width: 136),
-          const SizedBox(
-            height: 7,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Dr. Truluck Nik',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              Text(
-                'Medicine Specialist',
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  for (int i = 1; i < 5; i++)
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: 7,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(right: 15),
+          child: Container(
+            width: 190,
+            height: 264,
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.onPrimary,
+                borderRadius: BorderRadius.circular(12)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset('lib/assets/image/image.png',
+                    height: 180, width: 190),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Dr. Blessing',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                    Text(
+                      'Dentist Specialist',
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (int i = 1; i < 5; i++)
+                      Icon(
+                        Icons.star,
+                        size: 23,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     Icon(
                       Icons.star,
-                      size: 15,
-                      color: Theme.of(context).colorScheme.primary,
+                      size: 23,
+                      color: Theme.of(context).colorScheme.tertiaryContainer,
                     ),
-                  Icon(
-                    Icons.star,
-                    size: 15,
-                    color: Theme.of(context).colorScheme.tertiaryContainer,
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
