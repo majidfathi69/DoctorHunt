@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 
 class StarsWidget extends StatelessWidget {
-  const StarsWidget({super.key});
+  const StarsWidget(this.size, {super.key});
+
+  final double size;
+  static const int count = 5;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        for (int i = 0; i < 4; i++)
-          Icon(
-            Icons.star,
-            size: 15,
-            color: Theme.of(context).colorScheme.primary,
-          ),
-        Icon(
-          Icons.star,
-          size: 15,
-          color: Theme.of(context).colorScheme.tertiaryContainer,
-        ),
-       
+        for (var i = 0; i < count; i++)
+          Icon(Icons.star,
+              color: Theme.of(context).colorScheme.primary, size: size)
       ],
     );
   }
