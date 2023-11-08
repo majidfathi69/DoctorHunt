@@ -1,8 +1,8 @@
-import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../widgets/appbar_widget.dart';
+// import '../../../widgets/appbar_widget.dart';
+// import '../../../widgets/_appbar_widget.dart';
 import '../controllers/doctor_select_time_controller.dart';
 
 class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
@@ -19,7 +19,7 @@ class DoctorSelectTimeView extends GetView<DoctorSelectTimeController> {
         ),
         child: ListView(
           children: const [
-            SizedBox(height: 100, child: AppbarWidget()),
+            // SizedBox(height: 100, child: AppbarWidget()),
             SizedBox(child: SelectedDoctorWidget()),
             SizedBox(height: 20),
             SizedBox(
@@ -366,7 +366,7 @@ class SelectedDoctorWidget extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodySmall),
                           ],
                         ),
-                        const StarsWidget()
+                        // const StarsWidget(20),
                       ],
                     ),
                     Icon(
