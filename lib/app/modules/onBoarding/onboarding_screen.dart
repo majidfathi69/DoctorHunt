@@ -106,7 +106,7 @@ class OnboardingScreen extends StatelessWidget {
                         child: SizedBox(
                           width: 336,
                           height: 336,
-                          child: Image.asset(mdl.imageAddress),
+                          child: HeadlineImageWidget(mdl),
                         ),
                       ),
                     ],
@@ -118,43 +118,16 @@ class OnboardingScreen extends StatelessWidget {
                 child: SizedBox(
                   height: 385,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const SizedBox(height: 85),
                       SizedBox(
                         width: 289,
-                        child: Column(
-                          children: [
-                            Text(mdl.title,
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium),
-                            const SizedBox(height: 11),
-                            Text(mdl.content, textAlign: TextAlign.center),
-                          ],
-                        ),
+                        child: HeadlineWidget(mdl),
                       ),
-                      const SizedBox(height: 52),
                       SizedBox(
                         height: 91,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: 295,
-                              height: 54,
-                              child: ElevatedButton(
-                                onPressed: mdl.getStarted,
-                                child: const Text('Get Started'),
-                              ),
-                            ),
-                            const SizedBox(height: 14),
-                            GestureDetector(
-                              onTap: mdl.skip,
-                              child: const Text('Skip'),
-                            ),
-                          ],
-                        ),
+                        child: SkipStartedButtonsWidget(mdl),
                       ),
-                      const SizedBox(height: 43),
                     ],
                   ),
                 ),
@@ -163,6 +136,65 @@ class OnboardingScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class HeadlineImageWidget extends StatelessWidget {
+  const HeadlineImageWidget(this.mdl, {super.key});
+
+  final OnboardingModel mdl;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 336,
+      height: 336,
+      child: Image.asset(mdl.imageAddress),
+    );
+  }
+}
+
+class HeadlineWidget extends StatelessWidget {
+  const HeadlineWidget(this.mdl, {super.key});
+
+  final OnboardingModel mdl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(mdl.title, style: Theme.of(context).textTheme.headlineMedium),
+        const SizedBox(height: 11),
+        Text(mdl.content, textAlign: TextAlign.center),
+      ],
+    );
+  }
+}
+
+class SkipStartedButtonsWidget extends StatelessWidget {
+  const SkipStartedButtonsWidget(this.mdl, {super.key});
+
+  final OnboardingModel mdl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 295,
+          height: 54,
+          child: ElevatedButton(
+            onPressed: mdl.getStarted,
+            child: const Text('Get Started'),
+          ),
+        ),
+        const SizedBox(height: 14),
+        InkWell(
+          onTap: mdl.skip,
+          child: const Text('Skip'),
+        ),
+      ],
     );
   }
 }
