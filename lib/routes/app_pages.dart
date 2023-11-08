@@ -42,6 +42,11 @@ class AppPages {
           binding: HomeBinding(),
           page: () => const HomeScreen(),
         ),
+        GetPage(
+          name: _Paths.DOCTOR_SELECT_TIME,
+          page: () => const DoctorSelectTimeView(),
+          binding: DoctorSelectTimeBinding(),
+        ),
       ],
     ),
   ];
