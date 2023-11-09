@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../widgets/headline_widget.dart';
+import '../../../widgets/search_text_field.dart';
 import '../../../widgets/stars_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class HomeScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
-                child: SearchTextField(),
+                child: SearchTextField('Search...'),
               ),
             ),
           ),
@@ -315,32 +316,6 @@ class LiveDoctorWidget extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class SearchTextField extends StatelessWidget {
-  const SearchTextField({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 54,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          color: Theme.of(context).colorScheme.onPrimary),
-      child: TextField(
-        decoration: InputDecoration(
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.onPrimary, width: 0),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          hintText: 'Search...',
-          border: InputBorder.none,
-          prefixIcon: const Icon(Icons.search),
-        ),
       ),
     );
   }
