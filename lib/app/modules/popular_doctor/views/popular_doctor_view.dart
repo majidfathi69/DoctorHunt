@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/app/widgets/headline_widget.dart';
+import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,33 +11,38 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: const [
-          // TODO: sec1
-          SizedBox(height: 307, child: PopularDoctorsWidget()),
-          SizedBox(height: 20),
-          // TODO: sec2
-          Categorys(),
-        ],
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(
+                  'lib/assets/image/background.png',
+                ),
+                fit: BoxFit.cover)),
+        child: ListView(
+          children: const [
+            SizedBox(height: 307, child: PopularDoctorsWidget()),
+            SizedBox(height: 20),
+            CategoryWidget(),
+          ],
+        ),
       ),
       appBar: AppBar(),
     );
   }
 }
 
-class Categorys extends StatelessWidget {
-  const Categorys({
+class CategoryWidget extends StatelessWidget {
+  const CategoryWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 496,
-      width: double.infinity,
+      height: 618,
+      width: 335,
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Category', style: Theme.of(context).textTheme.titleLarge),
@@ -49,9 +55,9 @@ class Categorys extends StatelessWidget {
               itemBuilder: (context, index) {
                 return const Padding(
                   padding: EdgeInsets.only(
-                    bottom: 14,
+                    bottom: 15,
                   ),
-                  child: Category(),
+                  child: CategoryDoctorWidget(),
                 );
               },
             ),
@@ -62,8 +68,8 @@ class Categorys extends StatelessWidget {
   }
 }
 
-class Category extends StatelessWidget {
-  const Category({
+class CategoryDoctorWidget extends StatelessWidget {
+  const CategoryDoctorWidget({
     super.key,
   });
 
@@ -72,84 +78,70 @@ class Category extends StatelessWidget {
     return Container(
       width: 335,
       height: 104,
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(8)),
-      child: SizedBox(
-        width: 315,
-        height: 82,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 11, 10, 11),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset('lib/assets/image/Group 581.png'),
-              const SizedBox(
-                width: 15.05,
-              ),
-              Expanded(
-                child: Column(
+          color: Theme.of(context).colorScheme.onPrimary,
+          borderRadius: BorderRadius.circular(8)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset('lib/assets/image/Group 581.png'),
+          const SizedBox(
+            width: 15,
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Dr. Pediatrician',
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                            Text(
-                              'Specialist Cardiologist',
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            )
-                          ],
-                        ),
-                        Icon(
-                          Icons.favorite,
-                          color:
-                              Theme.of(context).colorScheme.tertiaryContainer,
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8.59,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            for (int i = 1; i < 5; i++)
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .tertiaryContainer,
-                            ),
-                          ],
+                        Text(
+                          'Dr. Pediatrician',
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                         Text(
-                          '2.4 (2475 views)',
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          'Specialist Cardiologist',
+                          style: Theme.of(context).textTheme.bodyMedium,
                         )
                       ],
                     ),
+                    Icon(
+                      Icons.favorite_border_outlined,
+                      color: Theme.of(context).colorScheme.secondary,
+                    )
                   ],
                 ),
-              ),
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const StarsWidget(15),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '2.4',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          TextSpan(
+                            text: ' (2475 views)',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -168,10 +160,7 @@ class PopularDoctorsWidget extends StatelessWidget {
       children: <Widget>[
         HeadlineWidget(),
         SizedBox(height: 15),
-        SizedBox(
-          height: 264,
-          child: PopularDoctorWidget(),
-        )
+        SizedBox(height: 264, child: PopularDoctorWidget())
       ],
     );
   }
@@ -197,11 +186,12 @@ class PopularDoctorWidget extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onPrimary,
                 borderRadius: BorderRadius.circular(12)),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset('lib/assets/image/image.png',
                     height: 180, width: 190),
+                SizedBox(height: 10),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -216,21 +206,25 @@ class PopularDoctorWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (int i = 1; i < 5; i++)
+                const SizedBox(height: 10),
+                SizedBox(
+                  height: 20,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (int i = 1; i < 5; i++)
+                        Icon(
+                          Icons.star,
+                          size: 20,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                       Icon(
                         Icons.star,
-                        size: 23,
-                        color: Theme.of(context).colorScheme.primary,
+                        size: 20,
+                        color: Theme.of(context).colorScheme.tertiaryContainer,
                       ),
-                    Icon(
-                      Icons.star,
-                      size: 23,
-                      color: Theme.of(context).colorScheme.tertiaryContainer,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
