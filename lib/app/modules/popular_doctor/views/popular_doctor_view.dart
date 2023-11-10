@@ -1,3 +1,4 @@
+import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
 import 'package:doctor_hunt/app/widgets/headline_widget.dart';
 import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +21,13 @@ class PopularDoctorView extends GetView<PopularDoctorController> {
                 fit: BoxFit.cover)),
         child: ListView(
           children: const [
+            SizedBox(height: 100, child: AppbarWidget('Popular Doctor')),
             SizedBox(height: 307, child: PopularDoctorsWidget()),
             SizedBox(height: 20),
             CategoryWidget(),
           ],
         ),
       ),
-      appBar: AppBar(),
     );
   }
 }
@@ -191,7 +192,7 @@ class PopularDoctorWidget extends StatelessWidget {
               children: [
                 Image.asset('lib/assets/image/image.png',
                     height: 180, width: 190),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -207,24 +208,9 @@ class PopularDoctorWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                SizedBox(
+                const SizedBox(
                   height: 20,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      for (int i = 1; i < 5; i++)
-                        Icon(
-                          Icons.star,
-                          size: 20,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      Icon(
-                        Icons.star,
-                        size: 20,
-                        color: Theme.of(context).colorScheme.tertiaryContainer,
-                      ),
-                    ],
-                  ),
+                  child: StarsWidget(20)
                 ),
               ],
             ),
