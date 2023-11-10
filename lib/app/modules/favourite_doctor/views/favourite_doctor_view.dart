@@ -1,6 +1,8 @@
+import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/search_text_field.dart';
 import '../controllers/favourite_doctor_controller.dart';
 
 class FavouriteDoctorView extends GetView<FavouriteDoctorController> {
@@ -9,28 +11,34 @@ class FavouriteDoctorView extends GetView<FavouriteDoctorController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: SearchBarWidget(),
-          ),
-          SizedBox(height: 25),
-          SizedBox(
-            height: 375,
-            child: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('lib/assets/image/background.png'),
+                fit: BoxFit.cover)),
+        child: ListView(
+          children: const [
+            SizedBox(height: 100, child: AppbarWidget('Favourite Doctors')),
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: FavouritsDoctors(),
+              child: SearchTextField('Dentist'),
             ),
-          ),
-          SizedBox(height: 30),
-          SizedBox(
-            height: 173,
-            child: FeatureDoctors(),
-          )
-        ],
+            SizedBox(height: 25),
+            SizedBox(
+              height: 375,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: FavouritsDoctors(),
+              ),
+            ),
+            SizedBox(height: 30),
+            SizedBox(
+              height: 173,
+              child: FeatureDoctors(),
+            )
+          ],
+        ),
       ),
-      appBar: AppBar(),
     );
   }
 }
