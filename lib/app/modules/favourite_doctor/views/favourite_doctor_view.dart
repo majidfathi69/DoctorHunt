@@ -2,6 +2,7 @@ import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/headline_widget.dart';
 import '../../../widgets/search_text_field.dart';
 import '../controllers/favourite_doctor_controller.dart';
 
@@ -25,16 +26,16 @@ class FavouriteDoctorView extends GetView<FavouriteDoctorController> {
             ),
             SizedBox(height: 25),
             SizedBox(
-              height: 375,
+              height: 370,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
-                child: FavouritsDoctors(),
+                child: FavouriteDoctorsWidget(),
               ),
             ),
             SizedBox(height: 30),
             SizedBox(
-              height: 173,
-              child: FeatureDoctors(),
+              height: 168,
+              child: FeatureDoctorsWidget(),
             )
           ],
         ),
@@ -43,8 +44,8 @@ class FavouriteDoctorView extends GetView<FavouriteDoctorController> {
   }
 }
 
-class FeatureDoctors extends StatelessWidget {
-  const FeatureDoctors({
+class FeatureDoctorsWidget extends StatelessWidget {
+  const FeatureDoctorsWidget({
     super.key,
   });
   // TODO: implement build
@@ -54,40 +55,19 @@ class FeatureDoctors extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Feature Doctor',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'See all',
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                  const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 11,
-                  ),
-                ],
-              )
-            ],
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget('Feature Doctor'),
         ),
         const SizedBox(
-          height: 15,
+          height: 10,
         ),
         Expanded(
           child: ListView.builder(
             itemCount: 7,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return const FeatureDoctor();
+              return const FeatureDoctorWidget();
             },
           ),
         )
@@ -96,8 +76,8 @@ class FeatureDoctors extends StatelessWidget {
   }
 }
 
-class FeatureDoctor extends StatelessWidget {
-  const FeatureDoctor({
+class FeatureDoctorWidget extends StatelessWidget {
+  const FeatureDoctorWidget({
     super.key,
   });
 
@@ -108,6 +88,7 @@ class FeatureDoctor extends StatelessWidget {
       child: Container(
         height: 130,
         width: 96,
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
           color: Theme.of(context).colorScheme.onPrimary,
@@ -116,40 +97,34 @@ class FeatureDoctor extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 6, 10, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.favorite,
-                    color: Theme.of(context).colorScheme.tertiaryContainer,
-                    size: 13,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Theme.of(context).colorScheme.primary,
-                        size: 13,
-                      ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      Text(
-                        '3.7',
-                        style: Theme.of(context).textTheme.labelSmall,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.favorite_outline,
+                  color: Theme.of(context).colorScheme.secondary,
+                  size: 13,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 13,
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      '3.7',
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                  ],
+                ),
+              ],
             ),
             Image.asset('lib/assets/image/Ellipse 142.png'),
-            const SizedBox(
-              height: 6,
-            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -184,22 +159,21 @@ class FeatureDoctor extends StatelessWidget {
   }
 }
 
-class FavouritsDoctors extends StatelessWidget {
-  const FavouritsDoctors({super.key});
+class FavouriteDoctorsWidget extends StatelessWidget {
+  const FavouriteDoctorsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return SizedBox(
       child: GridView.count(
         //childAspectRatio: 0.9,
         crossAxisCount: 2,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 15,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
         children: List.generate(
           4,
           (index) {
-            return const FavouritsDoctor();
+            return const FavouriteDoctorWidget();
           },
         ),
       ),
@@ -207,8 +181,8 @@ class FavouritsDoctors extends StatelessWidget {
   }
 }
 
-class FavouritsDoctor extends StatelessWidget {
-  const FavouritsDoctor({
+class FavouriteDoctorWidget extends StatelessWidget {
+  const FavouriteDoctorWidget({
     super.key,
   });
 
@@ -217,27 +191,22 @@ class FavouritsDoctor extends StatelessWidget {
     return Container(
       width: 160,
       height: 180,
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.onPrimary,
           borderRadius: BorderRadius.circular(6)),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 13, top: 13),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Icon(
-                Icons.favorite,
-                color: Theme.of(context).colorScheme.tertiaryContainer,
-              ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Icon(
+              Icons.favorite,
+              color: Theme.of(context).colorScheme.tertiaryContainer,
             ),
           ),
           Image.asset('lib/assets/image/Ellipse 141.png'),
-          const SizedBox(
-            height: 11,
-          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,

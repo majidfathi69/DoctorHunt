@@ -19,18 +19,9 @@ void main() {
     //AppbarWidget
     expect(find.text('Favourite Doctors'), findsOneWidget);
 
-    //FavouriteDoctorsWidget
-    expect(
-      find.descendant(
-        of: find.byType(DayTabsWidget),
-        matching: find.byType(SelectTimeBtnWidget),
-      ),
-      findsAtLeastNWidgets(0),
-    );
-
     //FeatureDoctorsWidget
     expect(find.byType(HeadlineWidget), findsOneWidget);
-    
+
     expect(
       find.descendant(
         of: find.byType(HeadlineWidget),
