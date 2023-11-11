@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/appbar_widget.dart';
 import '../controllers/doctor_details_controller.dart';
 
 class DoctorDetailsView extends GetView<DoctorDetailsController> {
@@ -18,6 +19,7 @@ class DoctorDetailsView extends GetView<DoctorDetailsController> {
         ),
         child: ListView(
           children: const [
+            SizedBox(height: 100,child: AppbarWidget('Doctor Details')),
             DoctorDetails(),
             SizedBox(height: 25),
             DoctorState(),
@@ -28,7 +30,6 @@ class DoctorDetailsView extends GetView<DoctorDetailsController> {
           ],
         ),
       ),
-      appBar: AppBar(),
     );
   }
 }
