@@ -41,7 +41,7 @@ void main() {
     expect(
       find.descendant(
         of: find.byType(DoctorStatesWidget),
-        matching: find.byKey(DoctorStateWidget),
+        matching: find.byType(DoctorStateWidget),
       ),
       findsNWidgets(3),
     );

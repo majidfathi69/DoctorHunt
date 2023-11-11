@@ -1,3 +1,4 @@
+import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,14 +20,14 @@ class DoctorDetailsView extends GetView<DoctorDetailsController> {
         ),
         child: ListView(
           children: const [
-            SizedBox(height: 100,child: AppbarWidget('Doctor Details')),
-            DoctorDetails(),
+            SizedBox(height: 100, child: AppbarWidget('Doctor Details')),
+            BookDoctorWidget(),
             SizedBox(height: 25),
-            DoctorState(),
+            DoctorStatesWidget(),
             SizedBox(height: 25),
             ServicesDescription(),
             SizedBox(height: 30),
-            MapWidget(),
+            MapDistanceWidget(),
           ],
         ),
       ),
@@ -34,19 +35,18 @@ class DoctorDetailsView extends GetView<DoctorDetailsController> {
   }
 }
 
-class MapWidget extends StatelessWidget {
-  const MapWidget({super.key});
+class MapDistanceWidget extends StatelessWidget {
+  const MapDistanceWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: UnconstrainedBox(
         child: Container(
           width: 335,
           height: 210,
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(8.5),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.onPrimary,
             borderRadius: BorderRadius.circular(10),
@@ -65,205 +65,144 @@ class ServicesDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 19),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SizedBox(
         height: 149,
-        width: 336,
-        child: Services(),
+        width: 335,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Services',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(
+              height: 14,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: ' 1.',
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary)),
+                        TextSpan(
+                            text:
+                                ' Patient care should be the number one priority.',
+                            style: Theme.of(context).textTheme.bodySmall),
+                      ],
+                    ),
+                  ),
+                  const Divider(
+                    color: Color(0x6772941a),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: ' 2.',
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary)),
+                        TextSpan(
+                            text:
+                                ' If you run your practiceyou know how frustrating.',
+                            style: Theme.of(context).textTheme.bodySmall),
+                      ],
+                    ),
+                  ),
+                  const Divider(
+                    color: Color(0x6772941a),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: ' 3.',
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary)),
+                        TextSpan(
+                            text:
+                                ' That’s why some of appointment reminder system.',
+                            style: Theme.of(context).textTheme.bodySmall),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class Services extends StatelessWidget {
-  const Services({
-    super.key,
-  });
+class DoctorStatesWidget extends StatelessWidget {
+  const DoctorStatesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Services',
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        const SizedBox(
-          height: 14,
-        ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: ' 1.',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary)),
-                    TextSpan(
-                        text:
-                            ' Patient care should be the number one priority.',
-                        style: Theme.of(context).textTheme.bodySmall),
-                  ],
-                ),
-              ),
-              const Divider(
-                color: Color(0x6772941a),
-                //TODO  unknow color line
-              ),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: ' 2.',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary)),
-                    TextSpan(
-                        text:
-                            ' If you run your practiceyou know how frustrating.',
-                        style: Theme.of(context).textTheme.bodySmall),
-                  ],
-                ),
-              ),
-              const Divider(
-                color: Color(0x6772941a),
-              ),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: ' 3.',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary)),
-                    TextSpan(
-                        text:
-                            ' That’s why some of appointment reminder system.',
-                        style: Theme.of(context).textTheme.bodySmall),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class DoctorState extends StatelessWidget {
-  const DoctorState({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 35),
-      child: UnconstrainedBox(
-        child: Container(
+    return UnconstrainedBox(
+      child: Container(
           width: 305,
           height: 84,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.onPrimary,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(8),
           ),
-          child: const StateWidget(),
-        ),
-      ),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DoctorStateWidget('100', 'Runing'),
+                DoctorStateWidget('500', 'Ongoing'),
+                DoctorStateWidget('700', 'Patient'),
+              ],
+            ),
+          )),
     );
   }
 }
 
-class StateWidget extends StatelessWidget {
-  const StateWidget({
+class DoctorStateWidget extends StatelessWidget {
+  const DoctorStateWidget(
+    this.numberState,
+    this.textState, {
     super.key,
   });
+  final String numberState;
+  final String textState;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return Container(
+      width: 84,
+      height: 64,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primaryContainer,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          //for (int i = 0; i < 3; i++)
-          Container(
-            width: 90,
-            height: 64,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.tertiaryContainer,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  '100',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                Text(
-                  'Runing',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: Theme.of(context).colorScheme.secondary),
-                ),
-              ],
-            ),
+          Text(
+            numberState,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
-          Container(
-            width: 90,
-            height: 64,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.tertiaryContainer,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  '500',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                Text(
-                  'Ongoing',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: 90,
-            height: 64,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.tertiaryContainer,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  '700',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                Text(
-                  'Patient',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                ),
-              ],
-            ),
+          Text(
+            textState,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(color: Theme.of(context).colorScheme.secondary),
           ),
         ],
       ),
@@ -271,42 +210,42 @@ class StateWidget extends StatelessWidget {
   }
 }
 
-class DoctorDetails extends StatelessWidget {
-  const DoctorDetails({super.key});
+class BookDoctorWidget extends StatelessWidget {
+  const BookDoctorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        width: 390,
+        width: 335,
         height: 170,
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.onPrimary,
             borderRadius: BorderRadius.circular(6)),
-        child: const DoctorDetail(),
+        child: const DoctorDetailsWidget(),
       ),
     );
   }
 }
 
-class DoctorDetail extends StatelessWidget {
-  const DoctorDetail({
+class DoctorDetailsWidget extends StatelessWidget {
+  const DoctorDetailsWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Column(
         children: [
+          const SizedBox(height: 7.5),
           Row(
             children: [
               Image.asset('lib/assets/image/DoctorDetails.png'),
               const SizedBox(
-                width: 12,
+                width: 10,
               ),
               Expanded(
                 child: Column(
@@ -331,36 +270,19 @@ class DoctorDetail extends StatelessWidget {
                           ],
                         ),
                         Icon(
-                          Icons.favorite,
-                          color:
-                              Theme.of(context).colorScheme.tertiaryContainer,
+                          Icons.favorite_outline,
+                          color: Theme.of(context).colorScheme.secondary,
                         )
                       ],
                     ),
                     const SizedBox(
-                      height: 8,
+                      height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Row(
-                          children: [
-                            for (int i = 0; i < 4; i++)
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .tertiaryContainer,
-                            ),
-                          ],
-                        ),
+                        const StarsWidget(15),
                         RichText(
                           text: TextSpan(
                             children: [
@@ -378,7 +300,6 @@ class DoctorDetail extends StatelessWidget {
                                 text: ' 28.00/hr',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               )
-                              //TODO colors
                             ],
                           ),
                         ),
@@ -389,7 +310,7 @@ class DoctorDetail extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           SizedBox(
             width: 140,
             height: 32,
