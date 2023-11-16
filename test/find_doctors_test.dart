@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:doctor_hunt/app/modules/find_doctors/views/find_doctors_screen.dart';
+import 'package:doctor_hunt/app/modules/find_doctors/views/find_doctors_view.dart';
 import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
 import 'package:doctor_hunt/app/widgets/search_text_field.dart';
 
@@ -14,7 +14,13 @@ void main() {
     expect(find.byType(SearchResualtsWidget), findsOneWidget);
 
     //AppbarWidget
-    expect(find.text('Find Doctors'), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byType(AppbarWidget),
+        matching: find.text('Find Doctors'),
+      ),
+      findsOneWidget,
+    );
 
     //SearchResualtsWidget
     expect(
