@@ -51,8 +51,16 @@ void main() {
       ),
       findsOneWidget,
     );
-
-    //WhoPatientWidget
+    
+    expect(
+      find.descendant(
+        of: find.byType(WhoPatientWidget),
+        matching: find.byType(PatientWidget),
+      ),
+      findsAtLeastNWidgets(0),
+    );
+    
+    //NextButtonWidget
     expect(
       find.descendant(
         of: find.byType(NextButtonWidget),
