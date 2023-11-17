@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:doctor_hunt/app/modules/doctor_appointment/views/doctor_appointment_view.dart';
+import 'package:doctor_hunt/app/modules/doctor_appointment/views/doctor_appointmentTime_view.dart';
 import 'package:doctor_hunt/app/modules/doctor_appointment/views/thank_you_view.dart';
 import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
 
@@ -51,7 +52,7 @@ void main() {
       ),
       findsOneWidget,
     );
-    
+
     expect(
       find.descendant(
         of: find.byType(WhoPatientWidget),
@@ -59,7 +60,7 @@ void main() {
       ),
       findsAtLeastNWidgets(0),
     );
-    
+
     //NextButtonWidget
     expect(
       find.descendant(

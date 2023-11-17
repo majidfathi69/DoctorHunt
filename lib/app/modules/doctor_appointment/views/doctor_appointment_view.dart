@@ -1,6 +1,10 @@
 import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
 import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'doctor_appointmentTime_view.dart';
+
 
 class DoctorAppointmentView extends StatelessWidget {
   const DoctorAppointmentView({super.key});
@@ -44,7 +48,9 @@ class NextButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return UnconstrainedBox(
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(const AppointmentTimeView());
+        },
         style: ElevatedButton.styleFrom(
           fixedSize: const Size(295, 54),
           shape: RoundedRectangleBorder(
