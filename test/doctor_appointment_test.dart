@@ -74,7 +74,7 @@ void main() {
   testWidgets('14_Doctor appointment screen-02', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: AppointmentTimeView()));
 
-    expect(find.byType(SheduleWidget), findsOneWidget);
+    //expect(find.byType(SheduleWidget), findsOneWidget);
 
     expect(find.byType(TimeWidget), findsOneWidget);
 

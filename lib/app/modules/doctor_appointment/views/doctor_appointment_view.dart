@@ -229,26 +229,25 @@ class WhoPatientWidget extends StatelessWidget {
           ),
           SizedBox(
             height: 150,
-            child: Expanded(
-                child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      if (index == 0) {
-                        return const Padding(
-                          padding: EdgeInsets.only(right: 10, left: 10),
-                          child: AddPatientWidget(),
-                        );
-                      } else {
-                        return Container();
-                      }
-                    },
-                    separatorBuilder: (context, index) {
-                      return const Padding(
-                        padding: EdgeInsets.only(right: 10),
-                        child: PatientWidget(),
-                      );
-                    },
-                    itemCount: 10)),
+            child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return const Padding(
+                      padding: EdgeInsets.only(right: 10, left: 10),
+                      child: AddPatientWidget(),
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
+                separatorBuilder: (context, index) {
+                  return const Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: PatientWidget(),
+                  );
+                },
+                itemCount: 10),
           )
         ],
       ),
