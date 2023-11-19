@@ -18,15 +18,17 @@ class ThankYouView extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           padding: const EdgeInsets.symmetric(vertical: 30),
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SuccessfulIconWidget(),
-              SuccessfulResponseWidget(),
-              SuccessfulActionsWidget(),
-            ],
-          ),
+          child: ListView(children: const [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SuccessfulIconWidget(),
+                SuccessfulResponseWidget(),
+                SuccessfulActionsWidget(),
+              ],
+            ),
+          ]),
         ),
       ),
     );
