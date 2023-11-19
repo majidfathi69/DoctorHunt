@@ -40,11 +40,17 @@ class SearchResualtsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        SearchResualtWidget(),
-        SizedBox(height: 15),
-      ],
+    return SizedBox(
+      height: 725,
+      child: ListView.builder(
+        itemCount: 4,
+        itemBuilder: (context, index) {
+          return const Padding(
+            padding: EdgeInsets.only(bottom: 15),
+            child: SearchResualtWidget(),
+          );
+        },
+      ),
     );
   }
 }
@@ -55,6 +61,133 @@ class SearchResualtWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container();
+    return Container(
+      width: 335,
+      height: 170,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Theme.of(context).colorScheme.onPrimary,
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: 88.905,
+                width: 91.07382,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    image: const DecorationImage(
+                      image: AssetImage('lib/assets/image/Ductor.png'),
+                      fit: BoxFit.cover,
+                    )),
+              ),
+              const SizedBox(width: 13.86),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 63.20,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Dr. Shruti Kedia',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium),
+                              Text('Tooths Dentist',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge!
+                                      .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary)),
+                              Text('7 Years experience ',
+                                  style: Theme.of(context).textTheme.bodySmall),
+                            ],
+                          ),
+                        ),
+                        Icon(Icons.favorite,
+                            color: Theme.of(context).colorScheme.primary)
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 9.6,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.circle,
+                          size: 15,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        Text(
+                          '87%',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                        Icon(
+                          Icons.circle,
+                          size: 15,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        Text(
+                          '69 Patient Stories',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          //button
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Next Available ',
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary)),
+                  Text('10:00 AM tomorrow ',
+                      style: Theme.of(context).textTheme.bodySmall),
+                ],
+              ),
+              SizedBox(
+                width: 110.872,
+                height: 34.745,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.circular(4))),
+                  child: const Text(
+                    'Book Now',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
