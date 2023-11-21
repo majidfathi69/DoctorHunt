@@ -20,6 +20,6 @@ abstract class _Paths {
   static const ONBOARDING_THREE = '/onboarding_three';
   static const DOCTOR_APPOINTMENT = '/doctor_appointment';
   static const DOCTOR_SELECT_TIME = '/doctor_select_time';
-  static const HOME = '/HOME';
+  static const HOME = '/home';
   static const FIND_DOCTORS = '/find_doctors';
 }
