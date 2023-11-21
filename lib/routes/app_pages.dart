@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../app/modules/doctor_appointment/bindings/doctor_appointment_binding.dart';
+import '../app/modules/doctor_appointment/views/doctor_appointment_view.dart';
 import '../app/modules/doctor_select_time/bindings/doctor_select_time_binding.dart';
 import '../app/modules/doctor_select_time/views/doctor_select_time_view.dart';
 import '../app/modules/find_doctors/bindings/find_doctors_bindings.dart';
@@ -40,6 +42,11 @@ class AppPages {
               ],
             ),
           ],
+        ),
+        GetPage(
+          name: _Paths.DOCTOR_APPOINTMENT,
+          page: () => const DoctorAppointmentView(),
+          binding: DoctorAppointmentBinding(),
         ),
         GetPage(
           name: _Paths.HOME,
