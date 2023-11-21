@@ -15,7 +15,7 @@ class RootView extends GetView<RootController> {
           // drawer: DrawerWidget(),
 
           body: GetRouterOutlet(
-            initialRoute: Routes.DOCTOR_APPOINTMENT,
+            initialRoute: Routes.ONBOARDING,
             anchorRoute: '/',
           ),
         );
