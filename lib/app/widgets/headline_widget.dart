@@ -10,6 +10,7 @@ class HeadlineWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
+
       children: [
         Text(
           title,
@@ -30,7 +31,7 @@ class HeadlineWidget extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
