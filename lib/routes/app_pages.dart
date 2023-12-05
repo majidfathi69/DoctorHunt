@@ -2,6 +2,8 @@
 
 import 'package:get/get.dart';
 
+import '../app/modules/doctor_details/bindings/doctor_details_binding.dart';
+import '../app/modules/doctor_details/views/doctor_details_view.dart';
 import '../app/modules/favourite_doctor/bindings/favourite_doctor_binding.dart';
 import '../app/modules/favourite_doctor/views/favourite_doctor_view.dart';
 import '../app/modules/doctor_appointment/bindings/doctor_appointment_binding.dart';
@@ -49,7 +51,12 @@ class AppPages {
             ),
           ],
         ),
-         GetPage(
+        GetPage(
+          name: _Paths.DOCTOR_DETAILS,
+          page: () => const DoctorDetailsView(),
+          binding: DoctorDetailsBinding(),
+        ),
+        GetPage(
           name: _Paths.FAVOURITE_DOCTOR,
           page: () => const FavouriteDoctorView(),
           binding: FavouriteDoctorBinding(),
