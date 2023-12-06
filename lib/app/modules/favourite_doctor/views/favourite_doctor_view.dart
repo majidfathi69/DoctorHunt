@@ -59,9 +59,12 @@ class FeatureDoctorsWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: HeadlineWidget('Feature Doctor'),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget(
+            'Feature Doctor',
+            seeall: () {},
+          ),
         ),
         const SizedBox(
           height: 10,

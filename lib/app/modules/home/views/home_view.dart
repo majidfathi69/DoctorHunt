@@ -62,9 +62,12 @@ class FeatureDoctorsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: HeadlineWidget('Feature Doctor'),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget(
+            'Feature Doctor',
+            seeall: () {},
+          ),
         ),
         const SizedBox(height: 10),
         SizedBox(
@@ -156,9 +159,12 @@ class PopularDoctorsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: HeadlineWidget('Popular Doctor'),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget(
+            'Popular Doctor',
+            seeall: () {},
+          ),
         ),
         SizedBox(
           height: 264,
