@@ -17,14 +17,19 @@ class FindDoctorsView extends StatelessWidget {
           ),
         ),
         child: ListView(
-          children: const [
-            SizedBox(height: 100, child: AppbarWidget('Find Doctors')),
+          children: [
+            const SizedBox(height: 100, child: AppbarWidget('Find Doctors')),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: SizedBox(height: 54, child: SearchTextField('Dentist')),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: SizedBox(
+                  height: 54,
+                  child: SearchTextField(
+                    'Dentist',
+                    search: () {},
+                  )),
             ),
-            SizedBox(height: 25),
-            Padding(
+            const SizedBox(height: 25),
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: SearchResualtsWidget(),
             ),
