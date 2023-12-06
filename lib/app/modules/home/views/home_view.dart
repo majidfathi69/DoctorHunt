@@ -11,42 +11,45 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          const Align(
-            alignment: Alignment.topCenter,
-            child: SizedBox(height: 156, child: ProfileWidget()),
-          ),
-          Positioned.fill(
-            top: 210,
-            child: ListView(
-              children: const [
-                SizedBox(height: 206, child: LiveDoctorsWidget()),
-                SizedBox(height: 30),
-                SizedBox(height: 90, child: DoctorSpecialtiesWidget()),
-                SizedBox(height: 30),
-                SizedBox(height: 307, child: PopularDoctorsWidget()),
-                SizedBox(height: 30),
-                SizedBox(height: 168, child: FeatureDoctorsWidget()),
-                SizedBox(height: 30),
-              ],
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('lib/assets/image/background.png'),
+                fit: BoxFit.cover)),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            const Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(height: 156, child: ProfileWidget()),
             ),
-          ),
-          Positioned(
-            top: 126,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: SearchTextField(
-                  'Search...',
-                  search: () {},
+            Positioned.fill(
+              top: 210,
+              child: ListView(
+                children: const [
+                  SizedBox(height: 206, child: LiveDoctorsWidget()),
+                  SizedBox(height: 30),
+                  SizedBox(height: 90, child: DoctorSpecialtiesWidget()),
+                  SizedBox(height: 30),
+                  SizedBox(height: 307, child: PopularDoctorsWidget()),
+                  SizedBox(height: 30),
+                  SizedBox(height: 168, child: FeatureDoctorsWidget()),
+                  SizedBox(height: 30),
+                ],
+              ),
+            ),
+            Positioned(
+              top: 126,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: SearchTextField('Search...'),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -89,8 +92,9 @@ class FeatureDoctorWidget extends StatelessWidget {
   @override
   build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(6))),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onPrimary,
+          borderRadius: const BorderRadius.all(Radius.circular(6))),
       width: 96,
       height: 130,
       child: Column(
