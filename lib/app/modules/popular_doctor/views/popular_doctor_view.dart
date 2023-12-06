@@ -180,39 +180,40 @@ class PopularDoctorWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(right: 15),
-          child: Container(
-            width: 190,
-            height: 264,
-            decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onPrimary,
-                borderRadius: BorderRadius.circular(12)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset('lib/assets/image/image.png',
-                    height: 180, width: 190),
-                const SizedBox(height: 10),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Dr. Blessing',
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                    Text(
-                      'Dentist Specialist',
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                const SizedBox(
-                  height: 20,
-                  child: StarsWidget(20)
-                ),
-              ],
+          child: InkWell(
+            onTap: () {},
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              width: 190,
+              height: 264,
+              decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  borderRadius: BorderRadius.circular(12)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset('lib/assets/image/image.png',
+                      height: 180, width: 190),
+                  const SizedBox(height: 10),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Dr. Blessing',
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      Text(
+                        'Dentist Specialist',
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const SizedBox(height: 20, child: StarsWidget(20)),
+                ],
+              ),
             ),
           ),
         );
