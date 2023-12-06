@@ -85,74 +85,78 @@ class FeatureDoctorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 12),
-      child: Container(
-        height: 130,
-        width: 96,
-        padding: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          color: Theme.of(context).colorScheme.onPrimary,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.favorite_outline,
-                  color: Theme.of(context).colorScheme.secondary,
-                  size: 13,
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.star,
-                      color: Theme.of(context).colorScheme.primary,
-                      size: 13,
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      '3.7',
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Image.asset('lib/assets/image/Ellipse 142.png'),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Dr. Crick',
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                RichText(
-                  text: TextSpan(
+      child: InkWell(
+        onTap: () {},
+        borderRadius: BorderRadius.circular(5),
+        child: Container(
+          height: 130,
+          width: 96,
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6),
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.favorite_outline,
+                    color: Theme.of(context).colorScheme.secondary,
+                    size: 13,
+                  ),
+                  Row(
                     children: [
-                      TextSpan(
-                        text: ' \$',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .copyWith(
-                                color: Theme.of(context).colorScheme.primary),
+                      Icon(
+                        Icons.star,
+                        color: Theme.of(context).colorScheme.primary,
+                        size: 13,
                       ),
-                      TextSpan(
-                          text: '25.00/ hours',
-                          style: Theme.of(context).textTheme.labelSmall),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Text(
+                        '3.7',
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
                     ],
                   ),
-                ),
-              ],
-            )
-          ],
+                ],
+              ),
+              Image.asset('lib/assets/image/Ellipse 142.png'),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Dr. Crick',
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: ' \$',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium!
+                              .copyWith(
+                                  color: Theme.of(context).colorScheme.primary),
+                        ),
+                        TextSpan(
+                            text: '25.00/ hours',
+                            style: Theme.of(context).textTheme.labelSmall),
+                      ],
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -188,45 +192,49 @@ class FavouriteDoctorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 160,
-      height: 180,
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onPrimary,
-          borderRadius: BorderRadius.circular(6)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: Icon(
-              Icons.favorite,
-              color: Theme.of(context).colorScheme.tertiaryContainer,
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        width: 160,
+        height: 180,
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onPrimary,
+            borderRadius: BorderRadius.circular(6)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: Icon(
+                Icons.favorite,
+                color: Theme.of(context).colorScheme.tertiaryContainer,
+              ),
             ),
-          ),
-          Image.asset('lib/assets/image/Ellipse 141.png'),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Dr. Shouey',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(
-                'Specalist Cardiology',
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-              ),
-            ],
-          ),
-        ],
+            Image.asset('lib/assets/image/Ellipse 141.png'),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Dr. Shouey',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  'Specalist Cardiology',
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
