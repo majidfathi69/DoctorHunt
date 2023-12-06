@@ -159,7 +159,7 @@ class PopularDoctorsWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        HeadlineWidget(),
+        HeadlineWidget('Popular Doctor'),
         SizedBox(height: 15),
         SizedBox(height: 264, child: PopularDoctorWidget())
       ],
