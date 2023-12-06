@@ -170,7 +170,7 @@ class FavouriteDoctorsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: GridView.count(
-        //childAspectRatio: 0.9,
+        childAspectRatio: 0.9,
         crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
