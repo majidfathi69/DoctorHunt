@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 
 class SearchTextField extends StatelessWidget {
-  const SearchTextField(this.hitText, {super.key});
+  const SearchTextField(this.hitText, {super.key, this.search});
 
   final String hitText;
+  final Function()? search;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class SearchTextField extends StatelessWidget {
           ),
           hintText: hitText,
           border: InputBorder.none,
-          prefixIcon: const Icon(Icons.search),
+          prefixIcon: InkWell(onTap: search, child: const Icon(Icons.search)),
         ),
       ),
     );

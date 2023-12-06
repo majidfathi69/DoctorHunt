@@ -37,9 +37,12 @@ class HomeScreen extends StatelessWidget {
             top: 126,
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: SearchTextField('Search...'),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: SearchTextField(
+                  'Search...',
+                  search: () {},
+                ),
               ),
             ),
           ),
@@ -107,7 +110,7 @@ class FeatureDoctorWidget extends StatelessWidget {
                   children: [
                     Icon(Icons.star,
                         size: 15, color: Theme.of(context).colorScheme.primary),
-                        const SizedBox(width: 3.5),
+                    const SizedBox(width: 3.5),
                     Text('7.0', style: Theme.of(context).textTheme.labelSmall),
                   ],
                 )
