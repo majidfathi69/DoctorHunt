@@ -85,58 +85,65 @@ class FeatureDoctorWidget extends StatelessWidget {
 
   @override
   build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(6))),
-      width: 96,
-      height: 130,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            height: 16,
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(6),
+      child: Container(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(6))),
+        width: 96,
+        height: 130,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              height: 16,
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.favorite,
+                      size: 15,
+                      color: Theme.of(context).colorScheme.tertiaryContainer),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.star,
+                          size: 15,
+                          color: Theme.of(context).colorScheme.primary),
+                      const SizedBox(width: 3.5),
+                      Text('7.0',
+                          style: Theme.of(context).textTheme.labelSmall),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Image.asset(featureDc),
+            Column(
               children: [
-                Icon(Icons.favorite,
-                    size: 15,
-                    color: Theme.of(context).colorScheme.tertiaryContainer),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.star,
-                        size: 15, color: Theme.of(context).colorScheme.primary),
-                        const SizedBox(width: 3.5),
-                    Text('7.0', style: Theme.of(context).textTheme.labelSmall),
-                  ],
+                Text('Dr. Crick',
+                    style: Theme.of(context).textTheme.titleSmall),
+                RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '\$',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(color: Theme.of(context).primaryColor)),
+                      TextSpan(
+                          text: ' 25.00/ hours',
+                          style: Theme.of(context).textTheme.labelMedium),
+                    ],
+                  ),
                 )
               ],
             ),
-          ),
-          Image.asset(featureDc),
-          Column(
-            children: [
-              Text('Dr. Crick', style: Theme.of(context).textTheme.titleSmall),
-              RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: '\$',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(color: Theme.of(context).primaryColor)),
-                    TextSpan(
-                        text: ' 25.00/ hours',
-                        style: Theme.of(context).textTheme.labelMedium),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -176,31 +183,35 @@ class PopularDoctorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(12))),
-      child: Column(
-        children: [
-          Container(
-            width: 180,
-            height: 190,
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Image.asset(popularDc),
-          ),
-          Column(
-            children: [
-              Column(
-                children: [
-                  Text('Dr. Fillerup Grab',
-                      style: Theme.of(context).textTheme.titleMedium),
-                  Text('Medicine Specialist',
-                      style: Theme.of(context).textTheme.labelMedium),
-                ],
-              ),
-              const SizedBox(child: StarsWidget(20)),
-            ],
-          ),
-        ],
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(24),
+      child: Container(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(12))),
+        child: Column(
+          children: [
+            Container(
+              width: 180,
+              height: 190,
+              padding: const EdgeInsets.symmetric(horizontal: 6),
+              child: Image.asset(popularDc),
+            ),
+            Column(
+              children: [
+                Column(
+                  children: [
+                    Text('Dr. Fillerup Grab',
+                        style: Theme.of(context).textTheme.titleMedium),
+                    Text('Medicine Specialist',
+                        style: Theme.of(context).textTheme.labelMedium),
+                  ],
+                ),
+                const SizedBox(child: StarsWidget(20)),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -232,10 +243,13 @@ class DoctorSpecialtyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 80,
-      height: 90,
-      child: Image.asset(dcSpecialty),
+    return InkWell(
+      onTap: () {},
+      child: SizedBox(
+        width: 80,
+        height: 90,
+        child: Image.asset(dcSpecialty),
+      ),
     );
   }
 }
