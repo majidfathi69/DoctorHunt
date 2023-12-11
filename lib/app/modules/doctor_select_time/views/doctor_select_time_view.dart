@@ -127,7 +127,6 @@ class AfternoonSlotsWidget extends StatelessWidget {
           Expanded(
             child: GridView.count(
               childAspectRatio: 2,
-              //TODO: size textButton
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               crossAxisCount: 4,
@@ -153,14 +152,18 @@ class AfternoonSlotsWidget extends StatelessWidget {
 }
 
 class TimeSlotWidget extends StatelessWidget {
-  const TimeSlotWidget({super.key, this.colorButton, this.colorText});
+  const TimeSlotWidget(
+      {super.key, this.colorButton, this.colorText, this.rootDelegate});
   final Color? colorButton;
   final Color? colorText;
+  final Function? rootDelegate;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        if (colorButton == null) {}
+      },
       style: ButtonStyle(
         padding: MaterialStateProperty.all(const EdgeInsets.all(11)),
         fixedSize: MaterialStateProperty.all(const Size(76, 40)),
@@ -172,7 +175,6 @@ class TimeSlotWidget extends StatelessWidget {
       child: Text(
         '1:00 PM',
         style: TextStyle(color: colorText),
-        //TODO : unkowe fontSize
       ),
     );
   }
