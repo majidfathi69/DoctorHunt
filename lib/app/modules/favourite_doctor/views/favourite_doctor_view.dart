@@ -18,22 +18,26 @@ class FavouriteDoctorView extends GetView<FavouriteDoctorController> {
                 image: AssetImage('lib/assets/image/background.png'),
                 fit: BoxFit.cover)),
         child: ListView(
-          children: const [
-            SizedBox(height: 100, child: AppbarWidget('Favourite Doctors')),
+          children: [
+            const SizedBox(
+                height: 100, child: AppbarWidget('Favourite Doctors')),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: SearchTextField('Dentist'),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: SearchTextField(
+                'Dentist',
+                search: () {},
+              ),
             ),
-            SizedBox(height: 25),
-            SizedBox(
+            const SizedBox(height: 25),
+            const SizedBox(
               height: 370,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: FavouriteDoctorsWidget(),
               ),
             ),
-            SizedBox(height: 30),
-            SizedBox(
+            const SizedBox(height: 30),
+            const SizedBox(
               height: 168,
               child: FeatureDoctorsWidget(),
             )
@@ -55,9 +59,12 @@ class FeatureDoctorsWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: HeadlineWidget('Feature Doctor'),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget(
+            'Feature Doctor',
+            seeall: () {},
+          ),
         ),
         const SizedBox(
           height: 10,

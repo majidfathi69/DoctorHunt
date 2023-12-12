@@ -11,39 +11,45 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          const Align(
-            alignment: Alignment.topCenter,
-            child: SizedBox(height: 156, child: ProfileWidget()),
-          ),
-          Positioned.fill(
-            top: 210,
-            child: ListView(
-              children: const [
-                SizedBox(height: 206, child: LiveDoctorsWidget()),
-                SizedBox(height: 30),
-                SizedBox(height: 90, child: DoctorSpecialtiesWidget()),
-                SizedBox(height: 30),
-                SizedBox(height: 307, child: PopularDoctorsWidget()),
-                SizedBox(height: 30),
-                SizedBox(height: 168, child: FeatureDoctorsWidget()),
-                SizedBox(height: 30),
-              ],
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('lib/assets/image/background.png'),
+                fit: BoxFit.cover)),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            const Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(height: 156, child: ProfileWidget()),
             ),
-          ),
-          Positioned(
-            top: 126,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: SearchTextField('Search...'),
+            Positioned.fill(
+              top: 210,
+              child: ListView(
+                children: const [
+                  SizedBox(height: 206, child: LiveDoctorsWidget()),
+                  SizedBox(height: 30),
+                  SizedBox(height: 90, child: DoctorSpecialtiesWidget()),
+                  SizedBox(height: 30),
+                  SizedBox(height: 307, child: PopularDoctorsWidget()),
+                  SizedBox(height: 30),
+                  SizedBox(height: 168, child: FeatureDoctorsWidget()),
+                  SizedBox(height: 30),
+                ],
               ),
             ),
-          ),
-        ],
+            Positioned(
+              top: 126,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: SearchTextField('Search...'),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -56,9 +62,12 @@ class FeatureDoctorsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: HeadlineWidget('Feature Doctor'),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget(
+            'Feature Doctor',
+            seeall: () {},
+          ),
         ),
         const SizedBox(height: 10),
         SizedBox(
@@ -139,7 +148,7 @@ class FeatureDoctorWidget extends StatelessWidget {
                           style: Theme.of(context).textTheme.labelMedium),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ],
@@ -156,9 +165,12 @@ class PopularDoctorsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: HeadlineWidget('Popular Doctor'),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: HeadlineWidget(
+            'Popular Doctor',
+            seeall: () {},
+          ),
         ),
         SizedBox(
           height: 264,

@@ -155,13 +155,16 @@ class PopularDoctorsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        HeadlineWidget('Popular Doctor'),
-        SizedBox(height: 15),
-        SizedBox(height: 264, child: PopularDoctorWidget())
+        HeadlineWidget(
+          'Popular Doctor',
+          seeall: () {},
+        ),
+        const SizedBox(height: 15),
+        const SizedBox(height: 264, child: PopularDoctorWidget())
       ],
     );
   }

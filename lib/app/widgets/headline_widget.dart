@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HeadlineWidget extends StatelessWidget {
-  const HeadlineWidget(this.title, {super.key});
+  const HeadlineWidget(this.title, {super.key, this.seeall});
 
   final String title;
+  final Function()? seeall ;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class HeadlineWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge,
         ),
         InkWell(
-          onTap: () {},
+          onTap: seeall,
           child: Row(
             children: [
               Text(
