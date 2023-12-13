@@ -4,6 +4,7 @@ import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../routes/app_pages.dart';
 import '../controllers/popular_doctor_controller.dart';
 
 class PopularDoctorView extends GetView<PopularDoctorController> {
@@ -161,7 +162,9 @@ class PopularDoctorsWidget extends StatelessWidget {
       children: <Widget>[
         HeadlineWidget(
           'Popular Doctor',
-          seeall: () {},
+          seeall: () {
+            Get.rootDelegate.offAndToNamed(Routes.POPULAR_DOCTOR);
+          },
         ),
         const SizedBox(height: 15),
         const SizedBox(height: 264, child: PopularDoctorWidget())
@@ -184,7 +187,9 @@ class PopularDoctorWidget extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(right: 15),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Get.rootDelegate.offAndToNamed(Routes.DOCTOR_SELECT_TIME);
+            },
             borderRadius: BorderRadius.circular(12),
             child: Container(
               width: 190,

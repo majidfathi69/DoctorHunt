@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../../routes/app_pages.dart';
 import '../../../widgets/appbar_widget.dart';
 import '../../../widgets/search_text_field.dart';
 
@@ -25,7 +27,9 @@ class FindDoctorsView extends StatelessWidget {
                   height: 54,
                   child: SearchTextField(
                     'Dentist',
-                    search: () {},
+                    search: () {
+                      Get.rootDelegate.offAndToNamed(Routes.FIND_DOCTORS);
+                    },
                   )),
             ),
             const SizedBox(height: 25),
@@ -178,7 +182,9 @@ class SearchResualtWidget extends StatelessWidget {
                 width: 110.872,
                 height: 34.745,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.rootDelegate.offAndToNamed(Routes.DOCTOR_SELECT_TIME);
+                  },
                   style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(0),
                       shape: BeveledRectangleBorder(

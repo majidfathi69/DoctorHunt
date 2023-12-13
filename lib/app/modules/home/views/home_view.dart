@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../../routes/app_pages.dart';
 import '../../../../utils/constants.dart';
 import '../../../widgets/headline_widget.dart';
 import '../../../widgets/search_text_field.dart';
@@ -42,9 +44,14 @@ class HomeScreen extends StatelessWidget {
               top: 126,
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: SearchTextField('Search...'),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: SearchTextField(
+                    'Search...',
+                    search: () {
+                      Get.rootDelegate.offAndToNamed(Routes.FIND_DOCTORS);
+                    },
+                  ),
                 ),
               ),
             ),
@@ -66,7 +73,9 @@ class FeatureDoctorsWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: HeadlineWidget(
             'Feature Doctor',
-            seeall: () {},
+            seeall: () {
+              Get.rootDelegate.offAndToNamed(Routes.FAVOURITE_DOCTOR);
+            },
           ),
         ),
         const SizedBox(height: 10),
@@ -95,7 +104,9 @@ class FeatureDoctorWidget extends StatelessWidget {
   @override
   build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.rootDelegate.offAndToNamed(Routes.DOCTOR_DETAILS);
+      },
       borderRadius: BorderRadius.circular(6),
       child: Container(
         decoration: const BoxDecoration(
@@ -169,7 +180,9 @@ class PopularDoctorsWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: HeadlineWidget(
             'Popular Doctor',
-            seeall: () {},
+            seeall: () {
+              Get.rootDelegate.offAndToNamed(Routes.POPULAR_DOCTOR);
+            },
           ),
         ),
         SizedBox(
@@ -196,7 +209,9 @@ class PopularDoctorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.rootDelegate.offAndToNamed(Routes.DOCTOR_SELECT_TIME);
+      },
       borderRadius: BorderRadius.circular(24),
       child: Container(
         decoration: const BoxDecoration(
@@ -256,7 +271,9 @@ class DoctorSpecialtyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.rootDelegate.offAndToNamed(Routes.FIND_DOCTORS);
+      },
       child: SizedBox(
         width: 80,
         height: 90,

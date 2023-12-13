@@ -1,6 +1,8 @@
+import 'package:doctor_hunt/app/modules/doctor_appointment/views/thank_you_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../routes/app_pages.dart';
 import '../../../widgets/stars_widget.dart';
 import '../../../widgets/appbar_widget.dart';
 import '../controllers/doctor_select_time_controller.dart';
@@ -162,7 +164,9 @@ class TimeSlotWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        if (colorButton == null) {}
+        if (colorButton == null) {
+          Get.dialog(const ThankYouView());
+        }
       },
       style: ButtonStyle(
         padding: MaterialStateProperty.all(const EdgeInsets.all(11)),
@@ -196,7 +200,9 @@ class NoSlotsAvailableWidget extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.rootDelegate.offAndToNamed(Routes.DOCTOR_SELECT_TIME);
+            },
             style: ElevatedButton.styleFrom(
               fixedSize: const Size(306, 54),
               shape: RoundedRectangleBorder(
@@ -285,7 +291,9 @@ class SelectTimeBtnWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Get.rootDelegate.offAndToNamed(Routes.DOCTOR_SELECT_TIME);
+      },
       style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.fromLTRB(4, 10, 4, 4),
           backgroundColor: backgroundColor,

@@ -2,6 +2,7 @@ import 'package:doctor_hunt/app/widgets/stars_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../routes/app_pages.dart';
 import '../../../widgets/appbar_widget.dart';
 import '../controllers/doctor_details_controller.dart';
 
@@ -315,7 +316,9 @@ class DoctorDetailsWidget extends StatelessWidget {
             width: 140,
             height: 32,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.rootDelegate.offAndToNamed(Routes.DOCTOR_APPOINTMENT);
+              },
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4))),

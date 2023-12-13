@@ -2,6 +2,7 @@ import 'package:doctor_hunt/app/widgets/appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../routes/app_pages.dart';
 import '../../../widgets/headline_widget.dart';
 import '../../../widgets/search_text_field.dart';
 import '../controllers/favourite_doctor_controller.dart';
@@ -25,7 +26,9 @@ class FavouriteDoctorView extends GetView<FavouriteDoctorController> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SearchTextField(
                 'Dentist',
-                search: () {},
+                search: () {
+                  Get.rootDelegate.offAndToNamed(Routes.FIND_DOCTORS);
+                },
               ),
             ),
             const SizedBox(height: 25),
@@ -63,7 +66,9 @@ class FeatureDoctorsWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: HeadlineWidget(
             'Feature Doctor',
-            seeall: () {},
+            seeall: () {
+              Get.rootDelegate.offAndToNamed(Routes.POPULAR_DOCTOR);
+            },
           ),
         ),
         const SizedBox(
@@ -93,7 +98,9 @@ class FeatureDoctorWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 12),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Get.rootDelegate.offAndToNamed(Routes.DOCTOR_DETAILS);
+        },
         borderRadius: BorderRadius.circular(5),
         child: Container(
           height: 130,
@@ -200,7 +207,9 @@ class FavouriteDoctorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.rootDelegate.offAndToNamed(Routes.DOCTOR_DETAILS);
+      },
       borderRadius: BorderRadius.circular(10),
       child: Container(
         width: 160,

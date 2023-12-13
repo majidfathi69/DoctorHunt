@@ -18,9 +18,11 @@ class OnboardingScreenThree extends StatelessWidget {
         imageAddress: onboardImage3,
         headerBGL: true,
         getStarted: () {
-          // Get.rootDelegate.offAndToNamed(Routes.HOME);
+          Get.rootDelegate.offAndToNamed(Routes.HOME);
         },
-        skip: () {},
+        skip: () {
+          Get.rootDelegate.offAndToNamed(Routes.HOME);
+        },
       ),
     );
   }
@@ -41,7 +43,9 @@ class OnboardingScreenTwo extends StatelessWidget {
         getStarted: () {
           Get.rootDelegate.toNamed(Routes.ONBOARDING_THREE);
         },
-        skip: () {},
+        skip: () {
+          Get.rootDelegate.offAndToNamed(Routes.HOME);
+        },
       ),
     );
   }
@@ -62,7 +66,9 @@ class OnboardingScreenOne extends StatelessWidget {
         getStarted: () {
           Get.rootDelegate.toNamed(Routes.ONBOARDING_TWO);
         },
-        skip: () {},
+        skip: () {
+          Get.rootDelegate.offAndToNamed(Routes.HOME);
+        },
       ),
     );
   }

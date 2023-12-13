@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AppbarWidget extends StatelessWidget {
   const AppbarWidget(this.title, {super.key});
@@ -17,7 +18,9 @@ class AppbarWidget extends StatelessWidget {
               width: size,
               height: size,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
